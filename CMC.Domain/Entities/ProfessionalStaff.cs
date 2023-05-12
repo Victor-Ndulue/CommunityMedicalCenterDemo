@@ -25,5 +25,7 @@ namespace CMCDemo.Domain.Entities
         public StaffAddress? StaffAddress { get; set;}
         public Community_Medical_Centers? MedicalCenter { get; set;}
         public Department? Department { get; set; }
+
+
     }
 }

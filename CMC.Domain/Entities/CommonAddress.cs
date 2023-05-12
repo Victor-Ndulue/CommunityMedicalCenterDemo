@@ -13,7 +13,7 @@ namespace CMCDemo.Domain.Entities
         public string? Landmark { get; set; }
         public string? Locality { get; set; }
         public string? City { get; set; }
-        public int PostCode { get; set; }
+        public string? PostCode { get; set; }
         public string? State { get; set; }
         public string? Country { get; set; }
     }
