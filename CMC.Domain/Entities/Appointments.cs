@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace CMCDemo.Domain.Entities
 {
-    public class Appointments
     {
         public int Appointments_ID  { get; set; }
         public Guid Location_Code { get; set; }

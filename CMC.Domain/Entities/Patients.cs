@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace CMCDemo.Domain.Entities
 {
-    public class Patients : AuditableBaseEntity
     {
         public int Patient_ID { get; set; }
         public int Address_ID { get; set; }
