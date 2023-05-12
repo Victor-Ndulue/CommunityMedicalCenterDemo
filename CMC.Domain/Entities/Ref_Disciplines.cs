@@ -10,5 +10,7 @@ namespace CMCDemo.Domain.Entities
         public string? DisciplinesDescription { get; set; }
         public string? DisciplinesType { get; set; }
         public DateTime? DateObtained { get; set; }
+
+        public virtual ProfessionalStaff ProfessionalStaff { get; set;}
     }
 }
