@@ -21,7 +21,6 @@ namespace CMCDemo.Domain.Entities
         public DateTime DateLeftCenter { get; set;}
         public MailAddress? MailAddress { get; set;}
         public PhoneAttribute? PhoneNumber { get; set; }
-        public Ref_Disciplines? Ref_Discipline { get; set;}
         public StaffAddress? StaffAddress { get; set;}
         public Community_Medical_Centers? MedicalCenter { get; set;}
         public Department? Department { get; set; }
