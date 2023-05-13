@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace CMCDemo.Domain.Entities
 {
+    public class Appointments : AppointmentCategory
     {
-        public int Appointments_ID  { get; set; }
-        public Guid Location_Code { get; set; }
-        public int Patient_ID { get; set; }
-        public DateTime Appointment_Date { get; }
-        public  string?   Medical_Notes { get;  }
-        public string? Other_Details { get;}
-
-
+        public ICollection<AppointmentCategory>? AppointmentCategory { get; set; }
     }
 }
