@@ -19,6 +19,7 @@ namespace CMCDemo.Domain.Entities
         public ICollection<Appointments>? Patients { get; set; }
 
         public  ProfessionalStaff? ProfessionalStaff { get; set;}
+        
          
     }
 }

@@ -34,11 +34,9 @@ namespace CMCDemo.Domain.Entities
         public MailAddress? MailAddress { get; set;}
         [Required]
         public PhoneAttribute? PhoneNumber { get; set; }
-        [Required]
-        public StaffAddress? StaffAddress { get; set;}
-        [Required]
-        public Community_Medical_Centers? MedicalCenter { get; set;}
-        [Required]
+
+        public StaffAddress? StaffAddress { get; set}
+        public Community_Medical_Centers? MedicalCenter { get; set; }
         public Department? Department { get; set; }
 
         public ICollection<Ref_Disciplines>? Ref_Disciplines { get; set; }
