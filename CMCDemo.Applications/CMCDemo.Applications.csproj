@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CMC.Domain\CMCDemo.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

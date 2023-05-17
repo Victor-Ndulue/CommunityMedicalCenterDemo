@@ -16,6 +16,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMCDemo.Domain", "CMC.Domain\CMCDemo.Domain.csproj", "{5B308ADB-CCA9-495F-B810-62CB91A01C46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMCDemo.Applications", "CMCDemo.Applications\CMCDemo.Applications.csproj", "{C5595429-D9A7-443F-9CDD-E4A3FA787033}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5B308ADB-CCA9-495F-B810-62CB91A01C46} = {5B308ADB-CCA9-495F-B810-62CB91A01C46}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMCDemo.Persistence", "CMCDemo.Persistence\CMCDemo.Persistence.csproj", "{EA49D5AD-ACE6-428A-807E-3FF7B920A4BC}"
 EndProject
