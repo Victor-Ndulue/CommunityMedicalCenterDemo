@@ -35,7 +35,7 @@ namespace CMCDemo.Domain.Entities
         [Required]
         public PhoneAttribute? PhoneNumber { get; set; }
 
-        public StaffAddress? StaffAddress { get; set}
+        public StaffAddress? StaffAddress { get; set; }
         public Community_Medical_Centers? MedicalCenter { get; set; }
         public Department? Department { get; set; }
 
