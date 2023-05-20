@@ -39,7 +39,6 @@ namespace CMCDemo.Domain.Entities
         public Community_Medical_Centers? MedicalCenter { get; set; }
         public Department? Department { get; set; }
 
-        public ICollection<Ref_Disciplines>? Ref_Disciplines { get; set; }
 
     }
 }
