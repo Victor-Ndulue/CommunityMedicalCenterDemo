@@ -9,8 +9,8 @@ namespace CMCDemo.Applications.Contracts
 {
     public interface IDepartmentRepository
     {
-        Task<IEnumerable<Department>> GetAllAsync(bool trackchanges);
-        Task<Department> GetAddressById(string Name, bool trackchanges);
+        Task<IEnumerable<Department>> GetAllDepartmentAsync(bool trackchanges);
+        Task<Department> GetDepartmentById(string Name, bool trackchanges);
         void Create(Department entity);
         void Delete(Department entity);
     }
