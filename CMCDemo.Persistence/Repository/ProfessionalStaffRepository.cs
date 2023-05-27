@@ -29,6 +29,7 @@ namespace CMCDemo.Persistence.Repository
         public async Task<IEnumerable<ProfessionalStaff>> GetAllProfessionalStaffAsync(bool trackchanges)
         {
             return await GetAllAsync(trackchanges)
+
                 .OrderBy(x=> x.Id)
                 .ToListAsync();
         }

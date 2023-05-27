@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace CMCDemo.Persistence.Common
 {
     public sealed class LoggerManager : ILoggerManager
+
     {
         private static ILogger logger = LogManager.GetCurrentClassLogger();
         public void LogDebugging(string message)

@@ -35,6 +35,7 @@ namespace CMCDemo.Persistence.Repository
         public async Task<StaffAddress> GetStaffAddressByName(string Name, bool trackchanges)
         {
             return await FindByCondition(x => x.StreetName == Name, trackchanges).FirstOrDefaultAsync(); 
+
         }
         
     }

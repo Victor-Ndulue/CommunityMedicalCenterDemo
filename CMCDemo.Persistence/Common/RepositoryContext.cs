@@ -18,6 +18,7 @@ namespace CMCDemo.Persistence.Common
         public DbSet<Ref_Disciplines> Ref_Disciplines { get; set; }
         public DbSet<StaffAddress> StaffAddresses { get; set;}
 
+
     }
 }
 
