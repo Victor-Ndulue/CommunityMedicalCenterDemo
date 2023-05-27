@@ -9,7 +9,7 @@ namespace CMCDemo.Applications.Contracts
 {
     public interface IMedicalCenterAddress
     {
-        Task<IEnumerable<MedicalCenterAddress>> GetAllMedicalCenterAddressesAsync();
+        Task<IEnumerable<MedicalCenterAddress>> GetAllMedicalCenterAddressesAsync(bool trackchanges);
         Task<MedicalCenterAddress> GetMedicalCenterAddressByName(string name, bool trackchanges);
         void Create(MedicalCenterAddress entity);
         void Delete(MedicalCenterAddress entity);

@@ -11,7 +11,7 @@ namespace CMCDemo.Applications.Common
     {
         ICommunity_Medical_CentersRepository Community_Medical_Centers { get; }
         IDepartmentRepository Department { get; }
-        IMedicalCenterAddress CommunityCenterAddress { get; }
+        IMedicalCenterAddress MedicalCenterAddress { get; }
         IProfessionalStaff ProfessionalStaff { get; }
         IRef_Disciplines Ref_Disciplines { get; }
         IStaffAddress StaffAddress { get; }

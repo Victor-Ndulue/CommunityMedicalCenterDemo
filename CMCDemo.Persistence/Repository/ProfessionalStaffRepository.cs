@@ -26,9 +26,10 @@ namespace CMCDemo.Persistence.Repository
             Delete(professionalStaff);
         }
 
-        public async Task<IEnumerable<IProfessionalStaff>> GetAllProfessionalStaffAsync(bool trackchanges)
+        public async Task<IEnumerable<ProfessionalStaff>> GetAllProfessionalStaffAsync(bool trackchanges)
         {
-            return (IEnumerable<IProfessionalStaff>)await GetAllAsync(trackchanges)
+            return await GetAllAsync(trackchanges)
+
                 .OrderBy(x=> x.Id)
                 .ToListAsync();
         }

@@ -30,13 +30,12 @@ namespace CMCDemo.Persistence.Repository
             return await GetAllAsync(trackchanges)
                 .OrderBy(x => x.Id)
                 .ToListAsync();
-                
-                
         }
 
         public async Task<StaffAddress> GetStaffAddressByName(string Name, bool trackchanges)
         {
-           return await FindByCondition(x => x.StreetName == Name, trackchanges).FirstOrDefaultAsync(); 
+            return await FindByCondition(x => x.StreetName == Name, trackchanges).FirstOrDefaultAsync(); 
+
         }
         
     }
