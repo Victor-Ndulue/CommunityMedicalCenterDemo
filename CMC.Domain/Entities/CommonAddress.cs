@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CMCDemo.Domain.Entities
 {
-    public abstract class CommonAddress: AuditableBaseEntity
+    public abstract class CommonAddress
     {
         [Required(ErrorMessage ="Field cannot be left empty. Please check all fields and fill the vacant")]
         [MaxLength(5, ErrorMessage ="Building Number cannot exceed 5 characters ")]

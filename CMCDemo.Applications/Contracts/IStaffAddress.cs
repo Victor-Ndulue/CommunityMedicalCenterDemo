@@ -10,7 +10,7 @@ namespace CMCDemo.Applications.Contracts
     public interface IStaffAddress
     {
         Task <IEnumerable<StaffAddress>> GetAllStaffAddressAsync (bool trackchanges);
-        Task <StaffAddress> GetStaffAddressByNameAsync (string Name, bool trackchanges);
+        Task <StaffAddress> GetStaffAddressByName (string Name, bool trackchanges);
         void Create(StaffAddress entity);
         void Delete(StaffAddress entity);
     }

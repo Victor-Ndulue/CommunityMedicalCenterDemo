@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 
 namespace CMCDemo.Domain.Entities
 {
-    public class Community_Medical_Centers: AuditableBaseEntity
+    public class Community_Medical_Centers
     {
-        [ForeignKey(nameof(MedicalCenterAddress_Id))]
+        [Key] 
+        public int Id { get; set; }
+        [ForeignKey(nameof(MedicalCenterAddress))]
         public int MedicalCenterAddress_Id { get; set; }
+
         [Required(ErrorMessage ="Medical Center Name cannot be left vacant")]
         [MaxLength(50, ErrorMessage ="Medical Center Name cannot exceed 50 charaacters")]
         public string? MedicalCenterName;
         [Required(ErrorMessage = "Medical Center Manager Name cannot be left vacant")]
         [MaxLength(20, ErrorMessage = "Medical Center Name cannot exceed 20 charaacters")]
         public string? MedicalCenterManager { get; set; }
-        [Required(ErrorMessage = "Medical Center Address cannot be left vacant")]
-        [MaxLength(50, ErrorMessage = "Medical Center Address cannot exceed 50 charaacters")]
-        public MedicalCenterAddress? Address { get; set; }
-        public UrlAttribute? Url { get; set; }
         [Required(ErrorMessage = "Phone number must be numbers and cannot be left vacant")]
         [MaxLength(13, ErrorMessage = "Phone number cannot exceed 13 charaacters")]
-        public int PhoneNumber { get; set; }
-        [Required(ErrorMessage = "EMail address cannot be left vacant")]
-        public EmailAddressAttribute? EmailAddress { get; set; }
+        public string? PhoneNumber { get; set; }
+
+
+        public MedicalCenterAddress? Address { get; set; }
         public ICollection<Department>? Departments { get; set; }
         public ICollection<ProfessionalStaff>? Staffs { get; set; }
 

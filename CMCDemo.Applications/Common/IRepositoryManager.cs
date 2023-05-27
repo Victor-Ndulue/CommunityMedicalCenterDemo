@@ -15,10 +15,6 @@ namespace CMCDemo.Applications.Common
         IProfessionalStaff ProfessionalStaff { get; }
         IRef_Disciplines Ref_Disciplines { get; }
         IStaffAddress StaffAddress { get; }
-        IAppointmentCategory AppointmentCategory { get; }
-        IAppointments Appointments { get; }
-        IPatientsRepository Patients { get; }
-        IRef_Appt_Locations Ref_Appt_Locations { get; }
 
         Task SaveAsync();
     }

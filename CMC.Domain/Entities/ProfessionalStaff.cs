@@ -4,10 +4,10 @@ using System.Net.Mail;
 
 namespace CMCDemo.Domain.Entities
 {
-    public class ProfessionalStaff:AuditableBaseEntity
+    public class ProfessionalStaff
     {
-        [ForeignKey(nameof(Ref_Disciplines))]
-        public int Ref_Disciplines_Code { get; set;}
+        [Key]
+        public int Id { get; set; }
         [ForeignKey (nameof(Community_Medical_Centers))]
         public int MedicalCenter_Id { get; set;}
         [ForeignKey(nameof(StaffAddress))]
@@ -31,14 +31,12 @@ namespace CMCDemo.Domain.Entities
         [Required]
         public DateTime DateLeftCenter { get; set;}
         [Required]
-        public MailAddress? MailAddress { get; set;}
-        [Required]
-        public PhoneAttribute? PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         public StaffAddress? StaffAddress { get; set; }
         public Community_Medical_Centers? MedicalCenter { get; set; }
         public Department? Department { get; set; }
-
+        public ICollection<Ref_Disciplines>? Ref_Disciplines { get; set; }
 
     }
 }

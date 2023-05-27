@@ -1,4 +1,4 @@
-namespace CMC_WebAPI
+namespace CMCDemo_WebApi
 {
     public class WeatherForecast
     {

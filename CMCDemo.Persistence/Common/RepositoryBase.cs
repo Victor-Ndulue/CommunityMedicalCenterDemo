@@ -18,7 +18,7 @@ namespace CMCDemo.Persistence.Common
             RepositoryContext = repositoryContext;
         }
 
-        public IQueryable<T> GetAll(bool trackchanges)
+        public IQueryable<T> GetAllAsync(bool trackchanges)
         {
             return !trackchanges ?
             RepositoryContext.Set<T>()
