@@ -16,12 +16,12 @@ namespace CMCDemo.Persistence.Repository
         {
         }
 
-        public void Create(MedicalCenterAddress medicalCenterAddress)
+        public void CreateMedicalCenterAddress(MedicalCenterAddress medicalCenterAddress)
         {
             Create(medicalCenterAddress);
         }
 
-        public void Delete(MedicalCenterAddress medicalCenterAddress)
+        public void DeleteMedicalCenterAddress(MedicalCenterAddress medicalCenterAddress)
         {
             Delete(medicalCenterAddress);
         }
@@ -35,8 +35,12 @@ namespace CMCDemo.Persistence.Repository
 
         public async Task<MedicalCenterAddress> GetMedicalCenterAddressByName(string name, bool trackchanges)
         {
-            return await FindByCondition(x => x.StreetName== name, trackchanges).FirstOrDefaultAsync();
-
+            var MedicalCenterAddress = await FindByCondition(x => x.StreetName== name, trackchanges).FirstOrDefaultAsync();
+            if (MedicalCenterAddress == null)
+            {
+                throw new Exception("Medical Center Address not found");
+            }
+                return MedicalCenterAddress;
         }
     }
 }

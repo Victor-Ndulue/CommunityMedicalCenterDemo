@@ -16,17 +16,16 @@ namespace CMCDemo.Persistence.Repository
         {
         }
 
-        
-
-        void Create(Department department)
+        public void CreateDepartment(Department department)
         {
             Create(department);
         }
 
-        void Delete(Department department)
+        public void DeleteDepartment(Department department)
         {
             Delete(department);
         }
+
         public async Task<IEnumerable<Department>> GetAllDepartmentAsync(bool trackchanges)
         {
             return await GetAllAsync(trackchanges)
@@ -36,7 +35,12 @@ namespace CMCDemo.Persistence.Repository
 
         public async Task<Department> GetDepartmentByName(string Name, bool trackchanges)
         {
-            return await FindByCondition(x => x.DepartmentName == Name, trackchanges).FirstOrDefaultAsync();
+            var Department = await FindByCondition(x => x.DepartmentName == Name, trackchanges).FirstOrDefaultAsync();
+            if (Department == null)
+            {
+                throw new ArgumentException("Department not found!");
+            }
+            return Department;
         }
     }
 }

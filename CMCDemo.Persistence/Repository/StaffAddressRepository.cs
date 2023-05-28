@@ -15,12 +15,12 @@ namespace CMCDemo.Persistence.Repository
         public StaffAddressRepository(RepositoryContext repositoryContext):base(repositoryContext) 
         {
         }
-        public void Create(StaffAddress staffAddress)
+        public void CreateStaffAddress(StaffAddress staffAddress)
         {
             Create(staffAddress);
         }
 
-        public void Delete(StaffAddress staffAddress)
+        public void DeleteStaffAddress(StaffAddress staffAddress)
         {
             Delete(staffAddress);
         }
@@ -34,8 +34,12 @@ namespace CMCDemo.Persistence.Repository
 
         public async Task<StaffAddress> GetStaffAddressByName(string Name, bool trackchanges)
         {
-            return await FindByCondition(x => x.StreetName == Name, trackchanges).FirstOrDefaultAsync(); 
-
+            var StaffAddress = await FindByCondition(x => x.StreetName == Name, trackchanges).FirstOrDefaultAsync(); 
+            if (StaffAddress == null)
+            {
+                throw new Exception("Staff address not found!");
+            }
+            return StaffAddress;
         }
         
     }

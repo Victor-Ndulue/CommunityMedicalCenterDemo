@@ -11,7 +11,7 @@ namespace CMCDemo.Applications.Contracts
     {
         Task<IEnumerable<ProfessionalStaff>> GetAllProfessionalStaffAsync(bool trackchanges);
         Task<ProfessionalStaff> GetProfessionalStaffByName(string firstName, string lastName, bool trackchanges);
-        void Create(ProfessionalStaff entity);
-        void Delete(ProfessionalStaff entity);
+        void CreateProfessionalStaff(ProfessionalStaff entity);
+        void DeleteProfessionalStaff(ProfessionalStaff entity);
     }
 }

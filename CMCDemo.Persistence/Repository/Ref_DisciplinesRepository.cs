@@ -15,12 +15,12 @@ namespace CMCDemo.Persistence.Repository
         public Ref_DisciplinesRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
-        public void Create(Ref_Disciplines ref_Disciplines)
+        public void CreateRef_Disciplines(Ref_Disciplines ref_Disciplines)
         {
             Create(ref_Disciplines);
         }
 
-        public void Delete(Ref_Disciplines ref_Disciplines)
+        public void DeleteRef_Disciplines(Ref_Disciplines ref_Disciplines)
         {
             Delete(ref_Disciplines);
         }
@@ -33,7 +33,12 @@ namespace CMCDemo.Persistence.Repository
 
         public async Task<Ref_Disciplines> GetRef_DisciplinesByName(string name, bool trackchanges)
         {
-            return await FindByCondition(x => x.DisciplinesName == name, trackchanges).FirstOrDefaultAsync();
+            var Ref_Disciplines = await FindByCondition(x => x.DisciplinesName == name, trackchanges).FirstOrDefaultAsync();
+            if (Ref_Disciplines == null)
+            {
+                throw new Exception("Discipline not found");
+            }
+            return Ref_Disciplines;
         }
     }
 }

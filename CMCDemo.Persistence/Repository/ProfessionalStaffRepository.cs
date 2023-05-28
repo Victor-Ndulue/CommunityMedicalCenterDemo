@@ -16,12 +16,12 @@ namespace CMCDemo.Persistence.Repository
         {
         }
 
-        public void Create(ProfessionalStaff professionalStaff)
+        public void CreateProfessionalStaff(ProfessionalStaff professionalStaff)
         {
             Create(professionalStaff);
         }
 
-        public void Delete(ProfessionalStaff professionalStaff)
+        public void DeleteProfessionalStaff(ProfessionalStaff professionalStaff)
         {
             Delete(professionalStaff);
         }
@@ -36,7 +36,12 @@ namespace CMCDemo.Persistence.Repository
 
         public async Task<ProfessionalStaff> GetProfessionalStaffByName(string firstName, string lastName, bool trackchanges)
         {
-            return await FindByCondition(x => x.FirstName == firstName || x.LastName == lastName, trackchanges).FirstOrDefaultAsync();
+            var ProfessionalStaff = await FindByCondition(x => x.FirstName == firstName || x.LastName == lastName, trackchanges).FirstOrDefaultAsync();
+            if (ProfessionalStaff == null)
+            {
+                throw new Exception("Staff not found!");
+            }
+            return ProfessionalStaff;
         }
     }
 }

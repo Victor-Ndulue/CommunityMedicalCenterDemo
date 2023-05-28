@@ -11,7 +11,7 @@ namespace CMCDemo.Applications.Contracts
     {
         Task<IEnumerable<Department>> GetAllDepartmentAsync(bool trackchanges);
         Task<Department> GetDepartmentByName(string Name, bool trackchanges);
-        void Create(Department entity);
-        void Delete(Department entity);
+        void CreateDepartment(Department entity);
+        void DeleteDepartment(Department entity);
     }
 }

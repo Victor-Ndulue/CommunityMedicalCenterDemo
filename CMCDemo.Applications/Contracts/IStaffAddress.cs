@@ -11,7 +11,7 @@ namespace CMCDemo.Applications.Contracts
     {
         Task <IEnumerable<StaffAddress>> GetAllStaffAddressAsync (bool trackchanges);
         Task <StaffAddress> GetStaffAddressByName (string Name, bool trackchanges);
-        void Create(StaffAddress entity);
-        void Delete(StaffAddress entity);
+        void CreateStaffAddress(StaffAddress entity);
+        void DeleteStaffAddress(StaffAddress entity);
     }
 }
