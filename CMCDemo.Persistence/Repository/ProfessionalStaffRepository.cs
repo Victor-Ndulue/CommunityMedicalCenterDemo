@@ -34,9 +34,9 @@ namespace CMCDemo.Persistence.Repository
                 .ToListAsync();
         }
 
-        public async Task<ProfessionalStaff> GetProfessionalStaffByName(string firstName, string lastName, bool trackchanges)
+        public async Task<ProfessionalStaff> GetProfessionalStaffByName(string Name, bool trackchanges)
         {
-            var ProfessionalStaff = await FindByCondition(x => x.FirstName == firstName || x.LastName == lastName, trackchanges).FirstOrDefaultAsync();
+            var ProfessionalStaff = await FindByCondition(x => x.FirstName != null&&x.FirstName.Contains(Name) || x.LastName !=null &&x.LastName.Contains(Name), trackchanges).FirstOrDefaultAsync();
             if (ProfessionalStaff == null)
             {
                 throw new Exception("Staff not found!");

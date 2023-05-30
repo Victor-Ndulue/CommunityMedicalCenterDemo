@@ -35,7 +35,7 @@ namespace CMCDemo.Persistence.Repository
 
         public async Task<Department> GetDepartmentByName(string Name, bool trackchanges)
         {
-            var Department = await FindByCondition(x => x.DepartmentName == Name, trackchanges).FirstOrDefaultAsync();
+            var Department = await FindByCondition(x => x.DepartmentName !=null && x.DepartmentName.Contains (Name), trackchanges).FirstOrDefaultAsync();
             if (Department == null)
             {
                 throw new ArgumentException("Department not found!");

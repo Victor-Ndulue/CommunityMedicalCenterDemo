@@ -33,7 +33,7 @@ namespace CMCDemo.Persistence.Repository
 
         public async Task<Ref_Disciplines> GetRef_DisciplinesByName(string name, bool trackchanges)
         {
-            var Ref_Disciplines = await FindByCondition(x => x.DisciplinesName == name, trackchanges).FirstOrDefaultAsync();
+            var Ref_Disciplines = await FindByCondition(x => x.DisciplinesName!=null && x.DisciplinesName.Contains(name), trackchanges).FirstOrDefaultAsync();
             if (Ref_Disciplines == null)
             {
                 throw new Exception("Discipline not found");

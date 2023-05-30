@@ -1,4 +1,5 @@
 ﻿using CMCDemo.Applications.Common;
+using CMCDemo.Persistence.Common;
 
 namespace CMCDemo_WebApi.Extensions
 {
@@ -20,7 +21,11 @@ namespace CMCDemo_WebApi.Extensions
         }
         public static void ConfigureLoggerService(this IServiceCollection services)
         {
-            services.AddSingleton<ILoggerManager, ILoggerManager>();
+            services.AddSingleton<ILoggerManager, LoggerManager>();
+        }
+        public static void ConfigureRepositoryManager(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
         }
     }
 }
