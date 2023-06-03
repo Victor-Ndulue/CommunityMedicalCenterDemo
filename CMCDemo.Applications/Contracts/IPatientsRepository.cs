@@ -9,9 +9,9 @@ namespace CMCDemo.Applications.Contracts
 {
     public interface IPatientsRepository
     {
-        Task<IEnumerable<Patients>> GetAllPatientsAsync(bool trackchanges);
-        Task<Patients> GetPatientsById(string Name, bool trackchanges);
-        void Create(Patients entity);   
-        void Delete(Patients entity);
+        Task<IEnumerable<Patients>> GetAllPatientsAsync(bool trackChanges);
+        Task<Patients> GetPatientsByName(string Name, bool trackChanges);   
+        void CreatePatient(Patients patients);
+        void DeletePatient(Patients patients);
     }
 }

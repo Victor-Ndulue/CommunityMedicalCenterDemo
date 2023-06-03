@@ -18,6 +18,10 @@ namespace CMCDemo.Persistence.Common
         private readonly Lazy<IProfessionalStaff> _professionalStaff;
         private readonly Lazy<IRef_Disciplines> _ref_Disciplines;
         private readonly Lazy<IStaffAddress> _staffAddress;
+        private readonly Lazy<IRef_Appt_Locations> _ref_appt_locations;
+        private readonly Lazy<IPatientsRepository> _patientsRepository;
+        private readonly Lazy<IAppointmentsCategory> _appointmentsCategory;
+        private readonly Lazy<IAppointments> _appointments;
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
@@ -27,6 +31,10 @@ namespace CMCDemo.Persistence.Common
             _professionalStaff = new Lazy<IProfessionalStaff>(() => new ProfessionalStaffRepository(repositoryContext));
             _ref_Disciplines = new Lazy<IRef_Disciplines>(() => new Ref_DisciplinesRepository(repositoryContext));
             _staffAddress = new Lazy<IStaffAddress>(()=>new StaffAddressRepository(repositoryContext));
+            _ref_appt_locations = new Lazy<IRef_Appt_Locations>(() => new Ref_Appt_LocationsRepository(repositoryContext));
+            _patientsRepository = new Lazy<IPatientsRepository>(()=> new PatientsRepository(repositoryContext));
+            _appointmentsCategory = new Lazy<IAppointmentsCategory>(()=> new AppointmentCategoryRepository(repositoryContext));
+            _appointments = new Lazy<IAppointments>(()=> new AppointmentsRepository(repositoryContext));
         }
         public ICommunity_Medical_CentersRepository Community_Medical_Centers => _communityRepository.Value;
 
@@ -39,6 +47,14 @@ namespace CMCDemo.Persistence.Common
         public IRef_Disciplines Ref_Disciplines => _ref_Disciplines.Value;
 
         public IStaffAddress StaffAddress => _staffAddress.Value;
+
+        public IRef_Appt_Locations Ref_Appt_Locations => _ref_appt_locations.Value;
+
+        public IPatientsRepository PatientsRepository => _patientsRepository.Value;
+
+        public IAppointmentsCategory AppointmentCategoryRepository => _appointmentsCategory.Value;
+
+        public IAppointments AppointmentsRepository => _appointments.Value;
 
         public async Task SaveAsync() => await _repositoryContext.SaveChangesAsync();
     }

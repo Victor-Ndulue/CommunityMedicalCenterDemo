@@ -17,6 +17,12 @@ namespace CMCDemo.Persistence.Common
         public DbSet<ProfessionalStaff> ProfessionalStaffs { get; set; }
         public DbSet<Ref_Disciplines> Ref_Disciplines { get; set; }
         public DbSet<StaffAddress> StaffAddresses { get; set;}
+        public DbSet<Staff_in_Appointments> staff_In_Appointments { get; set; }
+        public DbSet<Ref_Appt_Locations> Appt_Locations { get; set;}
+        public DbSet<Patients> Patients { get; set; }
+        public DbSet<Appointments> Appointments { get; set; }
+        public DbSet<AppointmentCategory> AppointmentsCategories { get; set;}
+        
 
 
     }

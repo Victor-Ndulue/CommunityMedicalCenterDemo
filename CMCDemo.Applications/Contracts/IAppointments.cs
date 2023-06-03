@@ -9,9 +9,9 @@ namespace CMCDemo.Applications.Contracts
 {
     public interface IAppointments
     {
-        Task<IEnumerable<Appointments>> GetAllAppointmentsAsync(bool trackchanges);
-        Task<Appointments> GetAppointmentsById(string Name, bool trackchanges);
-        void Create(Appointments entity);
-        void Delete(Appointments entity);
+        Task<IEnumerable<Appointments>> GetAppointmentsAsync(bool trackChanges);
+        Task<Appointments> GetAppointmentsByID(int id, bool trackChanges);
+        void CreateAppointments(Appointments appointments);
+        void DeleteAppointments(Appointments appointments);
     }
 }
