@@ -1,14 +1,26 @@
 using CMCDemo_WebApi.Extensions;
+using CMCDemo_WebApi.LogConfiguration;
+
+
+//Adding path to the nLog.Config
+LogConfigurator.ConfigureLogger();
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 
 //Injecting user defined defined services to the pipeline
 builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureRepositoryManager();
+//ServiceRepositoryManager 
+builder.Services.ConfigureSqlContext(builder.Configuration);
+
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 builder.Services.AddControllers();
 

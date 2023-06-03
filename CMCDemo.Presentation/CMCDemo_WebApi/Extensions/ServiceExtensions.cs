@@ -1,5 +1,6 @@
 ﻿using CMCDemo.Applications.Common;
 using CMCDemo.Persistence.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace CMCDemo_WebApi.Extensions
 {
@@ -27,5 +28,8 @@ namespace CMCDemo_WebApi.Extensions
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
         }
+        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) => 
+            services.AddDbContext<RepositoryContext>(option =>
+            option.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
     }
 }
