@@ -11,10 +11,7 @@ namespace CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS
 {
     public class ProfessionalStaffForUpdate
     {
-        [ForeignKey(nameof(StaffAddress))]
-        public int StaffAddress_Id { get; set; }
-        [ForeignKey(nameof(Department))]
-        public int Department_Id { get; set; }
+        public int Id { get; set; }
 
         public string? PhoneNumber { get; set; }
 

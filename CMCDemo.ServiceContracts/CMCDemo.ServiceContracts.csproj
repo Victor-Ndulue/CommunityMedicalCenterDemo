@@ -10,4 +10,8 @@
     <Folder Include="Interfaces\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CMCDemo.Applications\CMCDemo.Applications.csproj" />
+  </ItemGroup>
+
 </Project>

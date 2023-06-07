@@ -15,7 +15,7 @@ namespace CMCDemo.Domain.Entities
         public string? DepartmentName { get; set; }
         public string? DepartmentChief { get; set; }
 
-        public Community_Medical_Centers? MedicalCenter { get; set; }
-        public ICollection<ProfessionalStaff>? ProfessionalStaff { get; set; }
+        public virtual Community_Medical_Centers? MedicalCenter { get; set; }
+        public virtual  ICollection<ProfessionalStaff>? ProfessionalStaff { get; set; }
     }
 }

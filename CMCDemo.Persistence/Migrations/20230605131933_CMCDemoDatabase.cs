@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CMCDemo.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstDatabase : Migration
+    public partial class CMCDemoDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,15 +32,23 @@ namespace CMCDemo.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StaffAddress",
+                name: "StaffAddresses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BuildingNumber = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    StreetName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Landmark = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Locality = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    City = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    PostCode = table.Column<int>(type: "int", maxLength: 10, nullable: false),
+                    State = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StaffAddress", x => x.Id);
+                    table.PrimaryKey("PK_StaffAddresses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,7 +94,7 @@ namespace CMCDemo.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProfessionalStaff",
+                name: "ProfessionalStaffs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -105,22 +113,22 @@ namespace CMCDemo.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfessionalStaff", x => x.Id);
+                    table.PrimaryKey("PK_ProfessionalStaffs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProfessionalStaff_Community_Medical_Centers_MedicalCenterId",
+                        name: "FK_ProfessionalStaffs_Community_Medical_Centers_MedicalCenterId",
                         column: x => x.MedicalCenterId,
                         principalTable: "Community_Medical_Centers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ProfessionalStaff_Departments_Department_Id",
+                        name: "FK_ProfessionalStaffs_Departments_Department_Id",
                         column: x => x.Department_Id,
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProfessionalStaff_StaffAddress_StaffAddress_Id",
+                        name: "FK_ProfessionalStaffs_StaffAddresses_StaffAddress_Id",
                         column: x => x.StaffAddress_Id,
-                        principalTable: "StaffAddress",
+                        principalTable: "StaffAddresses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -140,9 +148,9 @@ namespace CMCDemo.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Ref_Disciplines", x => x.Ref_DisciplinesId);
                     table.ForeignKey(
-                        name: "FK_Ref_Disciplines_ProfessionalStaff_ProfessionalStaff_Id",
+                        name: "FK_Ref_Disciplines_ProfessionalStaffs_ProfessionalStaff_Id",
                         column: x => x.ProfessionalStaff_Id,
-                        principalTable: "ProfessionalStaff",
+                        principalTable: "ProfessionalStaffs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -158,18 +166,18 @@ namespace CMCDemo.Persistence.Migrations
                 column: "MedicalCenterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfessionalStaff_Department_Id",
-                table: "ProfessionalStaff",
+                name: "IX_ProfessionalStaffs_Department_Id",
+                table: "ProfessionalStaffs",
                 column: "Department_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfessionalStaff_MedicalCenterId",
-                table: "ProfessionalStaff",
+                name: "IX_ProfessionalStaffs_MedicalCenterId",
+                table: "ProfessionalStaffs",
                 column: "MedicalCenterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfessionalStaff_StaffAddress_Id",
-                table: "ProfessionalStaff",
+                name: "IX_ProfessionalStaffs_StaffAddress_Id",
+                table: "ProfessionalStaffs",
                 column: "StaffAddress_Id");
 
             migrationBuilder.CreateIndex(
@@ -185,13 +193,13 @@ namespace CMCDemo.Persistence.Migrations
                 name: "Ref_Disciplines");
 
             migrationBuilder.DropTable(
-                name: "ProfessionalStaff");
+                name: "ProfessionalStaffs");
 
             migrationBuilder.DropTable(
                 name: "Departments");
 
             migrationBuilder.DropTable(
-                name: "StaffAddress");
+                name: "StaffAddresses");
 
             migrationBuilder.DropTable(
                 name: "Community_Medical_Centers");

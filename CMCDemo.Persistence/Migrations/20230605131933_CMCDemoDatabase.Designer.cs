@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMCDemo.Persistence.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20230524093730_FirstDatabase")]
-    partial class FirstDatabase
+    [Migration("20230605131933_CMCDemoDatabase")]
+    partial class CMCDemoDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -191,7 +191,7 @@ namespace CMCDemo.Persistence.Migrations
 
                     b.HasIndex("StaffAddress_Id");
 
-                    b.ToTable("ProfessionalStaff");
+                    b.ToTable("ProfessionalStaffs");
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.Ref_Disciplines", b =>
@@ -232,9 +232,47 @@ namespace CMCDemo.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("BuildingNumber")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Landmark")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Locality")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<int>("PostCode")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("StreetName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("StaffAddress");
+                    b.ToTable("StaffAddresses");
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.Community_Medical_Centers", b =>

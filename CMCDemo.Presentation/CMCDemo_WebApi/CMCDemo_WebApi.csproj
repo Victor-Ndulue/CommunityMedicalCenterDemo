@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\CMCDemo.Persistence\CMCDemo.Persistence.csproj" />
+    <ProjectReference Include="..\..\CMCDemo.ServiceContracts\CMCDemo.ServiceContracts.csproj" />
+    <ProjectReference Include="..\..\CMCDemo.ServiceRepository\CMCDemo.ServiceRepository.csproj" />
   </ItemGroup>
 
 </Project>
