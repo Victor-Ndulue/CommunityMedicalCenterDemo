@@ -8,12 +8,6 @@ namespace CMCDemo.Domain.Entities
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey (nameof(Community_Medical_Centers))]
-        public int MedicalCenter_Id { get; set;}
-        [ForeignKey(nameof(StaffAddress))]
-        public int StaffAddress_Id { get; set;}
-        [ForeignKey(nameof(Department))]
-        public int Department_Id { get; set; }
 
         [Required (ErrorMessage = "No field can be left vacant. Check and fill vacant spaces.")]
         [MaxLength(12, ErrorMessage ="First+ Name cannot be longer than 12 characters")]
@@ -33,10 +27,16 @@ namespace CMCDemo.Domain.Entities
         [Required]
         public string? PhoneNumber { get; set; }
 
-        public StaffAddress? StaffAddress { get; set; }
-        public Community_Medical_Centers? MedicalCenter { get; set; }
-        public Department? Department { get; set; }
-        public ICollection<Ref_Disciplines>? Ref_Disciplines { get; set; }
+        [ForeignKey(nameof(StaffAddress))]
+        public int StaffAddress_Id { get; set;}
+        public virtual StaffAddress? StaffAddress { get; set; }
+        [ForeignKey (nameof(Community_Medical_Centers))]
+        public int MedicalCenter_Id { get; set;}
+        public virtual Community_Medical_Centers? MedicalCenter { get; set; }
+        [ForeignKey(nameof(Department))]
+        public int Department_Id { get; set; }
+        public virtual Department? Department { get; set; }
+        public virtual ICollection<Ref_Disciplines>? Ref_Disciplines { get; set; }
 
     }
 }

@@ -10,7 +10,7 @@ namespace CMCDemo_WebApi.MappingServices
 {
     public class ProfileMapping : Profile
     {
-        protected ProfileMapping()
+        public ProfileMapping()
         {
             CreateMap<Community_Medical_Centers, Community_Medical_CentersDto>();
             CreateMap<Community_Medical_CentersForCreation, Community_Medical_Centers>();

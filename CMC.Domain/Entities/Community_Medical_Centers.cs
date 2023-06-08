@@ -12,8 +12,6 @@ namespace CMCDemo.Domain.Entities
     {
         [Key] 
         public int Id { get; set; }
-        [ForeignKey(nameof(MedicalCenterAddress))]
-        public int MedicalCenterAddress_Id { get; set; }
 
         [Required(ErrorMessage ="Medical Center Name cannot be left vacant")]
         [MaxLength(50, ErrorMessage ="Medical Center Name cannot exceed 50 charaacters")]
@@ -23,12 +21,16 @@ namespace CMCDemo.Domain.Entities
         public string? MedicalCenterManager { get; set; }
         [Required(ErrorMessage = "Phone number must be numbers and cannot be left vacant")]
         [MaxLength(13, ErrorMessage = "Phone number cannot exceed 13 charaacters")]
+        [DataType(DataType.PhoneNumber)]
         public string? PhoneNumber { get; set; }
 
 
-        public MedicalCenterAddress? Address { get; set; }
-        public ICollection<Department>? Departments { get; set; }
-        public ICollection<ProfessionalStaff>? Staffs { get; set; }
+        [ForeignKey(nameof(MedicalCenterAddress))]
+        public int MedicalCenterAddress_Id { get; set; }
+        public virtual MedicalCenterAddress? Address { get; set; }
+
+        public virtual ICollection<Department>? Departments { get; set; }
+        public virtual ICollection<ProfessionalStaff>? Staffs { get; set; }
 
     }
 }

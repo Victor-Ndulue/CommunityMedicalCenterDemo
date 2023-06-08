@@ -11,8 +11,6 @@ namespace CMCDemo.Applications.DTO_s.Ref_DisciplinesDTOS
 {
     public class Ref_DisciplinesForCreation
     {
-        [ForeignKey(nameof(ProfessionalStaff))]
-        public int ProfessionalStaff_Id { get; set; }
 
         [Required(ErrorMessage ="Discipline name cannot be left vacant")]
         public string? DisciplinesName { get; set; }
@@ -21,6 +19,5 @@ namespace CMCDemo.Applications.DTO_s.Ref_DisciplinesDTOS
         [Required(ErrorMessage = "Date obtained discipline cannot be left vacant")]
         public DateTime? DateObtained { get; set; }
 
-        public ProfessionalStaff? ProfessionalStaff { get; set; }
     }
 }

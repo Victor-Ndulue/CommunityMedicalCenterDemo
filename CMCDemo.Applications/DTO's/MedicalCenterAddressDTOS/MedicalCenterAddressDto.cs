@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CMCDemo.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace CMCDemo.Applications.DTO_s.MedicalCenterAddressDTOS
         public string? Landmark { get; set; }
         public string? Locality { get; set; }
         public string? City { get; set; }
-        [DataType(DataType.PostalCode)]
         public int PostCode { get; set; }
         public string? State { get; set; }
         public string? Country { get; set; }
+        public ICollection<Community_Medical_Centers>? MedicalCenters { get; set; }
     }
 }

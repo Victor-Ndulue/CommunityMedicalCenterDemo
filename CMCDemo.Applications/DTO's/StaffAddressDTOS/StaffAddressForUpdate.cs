@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CMCDemo.Applications.DTO_s.StaffAddressDTOS
 {
-    internal class StaffAddressForUpdate
+    public class StaffAddressForUpdate
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Field cannot be left empty. Please check all fields and fill the vacant")]

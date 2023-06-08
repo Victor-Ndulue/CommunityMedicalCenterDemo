@@ -11,6 +11,6 @@ namespace CMCDemo.Domain.Entities
     {
         [Key] 
         public int Id { get; set; }
-        public ICollection<Community_Medical_Centers>? MedicalCenters { get; set; }
+        public virtual ICollection<Community_Medical_Centers>? MedicalCenters { get; set; }
     }
 }

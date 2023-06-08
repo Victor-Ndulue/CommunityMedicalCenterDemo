@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CMCDemo.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CMCDemo.Applications.DTO_s.StaffAddressDTOS
 {
-    internal class StaffAddressForCreation
+    public class StaffAddressForCreation
     {
         [Required(ErrorMessage = "Field cannot be left empty. Please check all fields and fill the vacant")]
         [MaxLength(5, ErrorMessage = "Building Number cannot exceed 5 characters ")]
@@ -32,6 +33,7 @@ namespace CMCDemo.Applications.DTO_s.StaffAddressDTOS
         [Required(ErrorMessage = "Field cannot be left empty. Please check all fields and fill the vacant")]
         [MaxLength(15, ErrorMessage = "Country name cannot exceed 15 characters ")]
         public string? Country { get; set; }
+
 
     }
 }

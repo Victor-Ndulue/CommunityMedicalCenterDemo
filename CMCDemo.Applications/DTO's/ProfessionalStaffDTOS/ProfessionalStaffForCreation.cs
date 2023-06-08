@@ -36,9 +36,5 @@ namespace CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS
         [Required]
         public string? PhoneNumber { get; set; }
 
-        public StaffAddress? StaffAddress { get; set; }
-        public Community_Medical_Centers? MedicalCenter { get; set; }
-        public Department? Department { get; set; }
-        public ICollection<Ref_Disciplines>? Ref_Disciplines { get; set; }
     }
 }

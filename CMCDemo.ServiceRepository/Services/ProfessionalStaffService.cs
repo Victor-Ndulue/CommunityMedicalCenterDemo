@@ -35,6 +35,7 @@ namespace CMCDemo.ServiceRepository.Services
         {
             var GetProfessionalStaff = await _repository.ProfessionalStaff.GetProfessionalStaffByName(Name, trackChanges);
             _repository.ProfessionalStaff.DeleteProfessionalStaff(GetProfessionalStaff);
+            await _repository.SaveAsync();
         }
 
         public async Task<IEnumerable<ProfessionalStaffDto>> GetAllProfessionalStaffDtoAsync(bool trackChanges)

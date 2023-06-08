@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-
 //Injecting user defined defined services to the pipeline
 builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();
@@ -34,6 +33,7 @@ var app = builder.Build();
 
 var logger = app.Services.GetRequiredService<ILoggerManager>();
 app.ConfigureExceptionHandler(logger);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

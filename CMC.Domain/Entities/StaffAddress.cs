@@ -7,6 +7,6 @@ namespace CMCDemo.Domain.Entities
         [Key]
         public int Id { get; set; }
 
-        public ICollection <ProfessionalStaff>? ProfessionalStaff { get; set; }
+        public virtual ICollection<ProfessionalStaff>? ProfessionalStaff { get; set; }
     }
 }

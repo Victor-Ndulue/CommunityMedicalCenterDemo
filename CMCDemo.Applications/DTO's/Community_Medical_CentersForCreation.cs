@@ -13,7 +13,8 @@ namespace CMCDemo.Applications.DTO_s
     {
         [Required(ErrorMessage = "Medical Center Name cannot be left vacant")]
         [MaxLength(50, ErrorMessage = "Medical Center Name cannot exceed 50 charaacters")]
-        public string? MedicalCenterName;
+        public string? MedicalCenterName { get; set; }
+
         [Required(ErrorMessage = "Medical Center Manager Name cannot be left vacant")]
         [MaxLength(20, ErrorMessage = "Medical Center Name cannot exceed 20 charaacters")]
         public string? MedicalCenterManager { get; set; }

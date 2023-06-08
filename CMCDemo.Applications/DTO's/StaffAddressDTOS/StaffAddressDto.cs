@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CMCDemo.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CMCDemo.Applications.DTO_s.StaffAddressDTOS
 {
-    internal class StaffAddressDto
+    public class StaffAddressDto
     {
         public int Id { get; set; }
         public string? BuildingNumber { get; set; }
@@ -18,6 +19,7 @@ namespace CMCDemo.Applications.DTO_s.StaffAddressDTOS
         public int PostCode { get; set; }
         public string? State { get; set; }
         public string? Country { get; set; }
+        public ICollection<ProfessionalStaff>? ProfessionalStaff { get; set; }
 
     }
 }
