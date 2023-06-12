@@ -14,9 +14,6 @@ namespace CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS
         public int Id { get; set; }
 
         public string? PhoneNumber { get; set; }
-
-        public StaffAddress? StaffAddress { get; set; }
-        public Department? Department { get; set; }
-        public ICollection<Ref_Disciplines>? Ref_Disciplines { get; set; }
+        public DateTime DateLeftCenter { get; set; }
     }
 }

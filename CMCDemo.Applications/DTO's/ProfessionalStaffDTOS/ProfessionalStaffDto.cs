@@ -12,9 +12,9 @@ namespace CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS
     public class ProfessionalStaffDto
     {
         public int Id { get; set; }
-        public int MedicalCenter_Id { get; set; }
-        public int StaffAddress_Id { get; set; }
-        public int Department_Id { get; set; }
+        public int Community_Medical_CentersId { get; set; }
+        public int StaffAddressId { get; set; }
+        public int DepartmentId { get; set; }
 
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

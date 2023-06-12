@@ -11,6 +11,7 @@ namespace CMCDemo.Applications.Contracts
     {
         Task<IEnumerable<MedicalCenterAddress>> GetAllMedicalCenterAddressesAsync(bool trackchanges);
         Task<MedicalCenterAddress> GetMedicalCenterAddressByName(string name, bool trackchanges);
+        void UpdateMedicalCenterAddress(MedicalCenterAddress medicalCenterAddress);
         void CreateMedicalCenterAddress(MedicalCenterAddress entity);
         void DeleteMedicalCenterAddress(MedicalCenterAddress entity);
     }

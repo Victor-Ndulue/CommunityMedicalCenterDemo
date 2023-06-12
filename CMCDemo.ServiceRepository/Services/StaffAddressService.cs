@@ -56,6 +56,7 @@ namespace CMCDemo.ServiceRepository.Services
         {
             var GetStA = await _repository.StaffAddress.GetStaffAddressByName(Name, trackChanges);
             var MapStA = _mapper.Map(staffAddressForUpdate, GetStA);
+            _repository.StaffAddress.UpdateStaffAddress(MapStA);
             await _repository.SaveAsync();
             return _mapper.Map<StaffAddressDto>(MapStA);
         }

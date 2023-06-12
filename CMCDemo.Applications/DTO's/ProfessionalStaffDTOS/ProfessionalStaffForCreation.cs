@@ -11,12 +11,10 @@ namespace CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS
 {
     public class ProfessionalStaffForCreation
     {
-        [ForeignKey(nameof(Community_Medical_Centers))]
-        public int MedicalCenter_Id { get; set; }
-        [ForeignKey(nameof(StaffAddress))]
-        public int StaffAddress_Id { get; set; }
-        [ForeignKey(nameof(Department))]
-        public int Department_Id { get; set; }
+        
+        public int Community_Medical_CentersId { get; set; }
+        public int StaffAddressId { get; set; }
+        public int DepartmentId { get; set; }
 
         [Required(ErrorMessage = "No field can be left vacant. Check and fill vacant spaces.")]
         [MaxLength(12, ErrorMessage = "First+ Name cannot be longer than 12 characters")]
@@ -31,8 +29,6 @@ namespace CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS
         public DateTime DateBirthed { get; set; }
         [Required]
         public DateTime DateJoinedCenter { get; set; }
-        [Required]
-        public DateTime DateLeftCenter { get; set; }
         [Required]
         public string? PhoneNumber { get; set; }
 

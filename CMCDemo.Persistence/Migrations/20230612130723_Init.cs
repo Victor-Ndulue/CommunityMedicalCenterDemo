@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CMCDemo.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class CMCDemoDatabase : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,7 +22,7 @@ namespace CMCDemo.Persistence.Migrations
                     Landmark = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
                     Locality = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     City = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    PostCode = table.Column<int>(type: "int", maxLength: 10, nullable: false),
+                    PostCode = table.Column<int>(type: "int", nullable: false),
                     State = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     Country = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
                 },
@@ -42,7 +42,7 @@ namespace CMCDemo.Persistence.Migrations
                     Landmark = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
                     Locality = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     City = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    PostCode = table.Column<int>(type: "int", maxLength: 10, nullable: false),
+                    PostCode = table.Column<int>(type: "int", nullable: false),
                     State = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     Country = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
                 },
@@ -57,19 +57,20 @@ namespace CMCDemo.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MedicalCenterAddress_Id = table.Column<int>(type: "int", nullable: false),
+                    MedicalCenterName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     MedicalCenterManager = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    AddressId = table.Column<int>(type: "int", nullable: true)
+                    MedicalCenterAddressId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Community_Medical_Centers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Community_Medical_Centers_MedicalCenterAddress_AddressId",
-                        column: x => x.AddressId,
+                        name: "FK_Community_Medical_Centers_MedicalCenterAddress_MedicalCenterAddressId",
+                        column: x => x.MedicalCenterAddressId,
                         principalTable: "MedicalCenterAddress",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -78,19 +79,19 @@ namespace CMCDemo.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MedicalCenter_Id = table.Column<int>(type: "int", nullable: false),
                     DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DepartmentChief = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MedicalCenterId = table.Column<int>(type: "int", nullable: true)
+                    Community_Medical_CentersId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Departments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Departments_Community_Medical_Centers_MedicalCenterId",
-                        column: x => x.MedicalCenterId,
+                        name: "FK_Departments_Community_Medical_Centers_Community_Medical_CentersId",
+                        column: x => x.Community_Medical_CentersId,
                         principalTable: "Community_Medical_Centers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -99,9 +100,6 @@ namespace CMCDemo.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MedicalCenter_Id = table.Column<int>(type: "int", nullable: false),
-                    StaffAddress_Id = table.Column<int>(type: "int", nullable: false),
-                    Department_Id = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
@@ -109,28 +107,31 @@ namespace CMCDemo.Persistence.Migrations
                     DateJoinedCenter = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateLeftCenter = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MedicalCenterId = table.Column<int>(type: "int", nullable: true)
+                    StaffAddressId = table.Column<int>(type: "int", nullable: false),
+                    DepartmentId = table.Column<int>(type: "int", nullable: false),
+                    Community_Medical_CentersId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProfessionalStaffs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProfessionalStaffs_Community_Medical_Centers_MedicalCenterId",
-                        column: x => x.MedicalCenterId,
-                        principalTable: "Community_Medical_Centers",
-                        principalColumn: "Id");
+                        name: "FK_ProfessionalStaffs_StaffAddresses_StaffAddressId",
+                        column: x => x.StaffAddressId,
+                        principalTable: "StaffAddresses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProfessionalStaffs_Departments_Department_Id",
-                        column: x => x.Department_Id,
+                        name: "FK_ProfessionalStaffs_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProfessionalStaffs_StaffAddresses_StaffAddress_Id",
-                        column: x => x.StaffAddress_Id,
-                        principalTable: "StaffAddresses",
+                        name: "FK_ProfessionalStaffs_Community_Medical_Centers_Community_Medical_CentersId",
+                        column: x => x.Community_Medical_CentersId,
+                        principalTable: "Community_Medical_Centers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -139,51 +140,51 @@ namespace CMCDemo.Persistence.Migrations
                 {
                     Ref_DisciplinesId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProfessionalStaff_Id = table.Column<int>(type: "int", nullable: false),
                     DisciplinesName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DisciplinesDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateObtained = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateObtained = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProfessionalStaffId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ref_Disciplines", x => x.Ref_DisciplinesId);
                     table.ForeignKey(
-                        name: "FK_Ref_Disciplines_ProfessionalStaffs_ProfessionalStaff_Id",
-                        column: x => x.ProfessionalStaff_Id,
+                        name: "FK_Ref_Disciplines_ProfessionalStaffs_ProfessionalStaffId",
+                        column: x => x.ProfessionalStaffId,
                         principalTable: "ProfessionalStaffs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Community_Medical_Centers_AddressId",
+                name: "IX_Community_Medical_Centers_MedicalCenterAddressId",
                 table: "Community_Medical_Centers",
-                column: "AddressId");
+                column: "MedicalCenterAddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Departments_MedicalCenterId",
+                name: "IX_Departments_Community_Medical_CentersId",
                 table: "Departments",
-                column: "MedicalCenterId");
+                column: "Community_Medical_CentersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfessionalStaffs_Department_Id",
+                name: "IX_ProfessionalStaffs_Community_Medical_CentersId",
                 table: "ProfessionalStaffs",
-                column: "Department_Id");
+                column: "Community_Medical_CentersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfessionalStaffs_MedicalCenterId",
+                name: "IX_ProfessionalStaffs_DepartmentId",
                 table: "ProfessionalStaffs",
-                column: "MedicalCenterId");
+                column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProfessionalStaffs_StaffAddress_Id",
+                name: "IX_ProfessionalStaffs_StaffAddressId",
                 table: "ProfessionalStaffs",
-                column: "StaffAddress_Id");
+                column: "StaffAddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ref_Disciplines_ProfessionalStaff_Id",
+                name: "IX_Ref_Disciplines_ProfessionalStaffId",
                 table: "Ref_Disciplines",
-                column: "ProfessionalStaff_Id");
+                column: "ProfessionalStaffId");
         }
 
         /// <inheritdoc />

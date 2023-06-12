@@ -12,7 +12,7 @@ namespace CMCDemo.ServiceContracts.Interfaces
         Task<IEnumerable<ProfessionalStaffDto>> GetAllProfessionalStaffDtoAsync(bool trackChanges);
         Task <ProfessionalStaffDto> GetProfessionalStaffDtoAsync(string Name, bool trackChanges);
         Task<ProfessionalStaffDto> CreateProfessionalStaffDto(ProfessionalStaffForCreation  CreationDto);
-        Task UpdateProfessionalStaffAsync(string Name,ProfessionalStaffForUpdate professsionalStaffForUpdate, bool trackChanges);
+        Task <ProfessionalStaffDto> UpdateProfessionalStaffAsync(string Name,ProfessionalStaffForUpdate professsionalStaffForUpdate, bool trackChanges);
         Task DeleteProfessionalStaffAsync(string Name,  bool trackChanges);
     }
 }

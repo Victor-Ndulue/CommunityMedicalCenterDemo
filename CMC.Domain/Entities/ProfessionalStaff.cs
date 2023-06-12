@@ -28,14 +28,17 @@ namespace CMCDemo.Domain.Entities
         public string? PhoneNumber { get; set; }
 
         [ForeignKey(nameof(StaffAddress))]
-        public int StaffAddress_Id { get; set;}
+        public int StaffAddressId { get; set;}
         public virtual StaffAddress? StaffAddress { get; set; }
-        [ForeignKey (nameof(Community_Medical_Centers))]
-        public int MedicalCenter_Id { get; set;}
-        public virtual Community_Medical_Centers? MedicalCenter { get; set; }
+
         [ForeignKey(nameof(Department))]
-        public int Department_Id { get; set; }
+        public int DepartmentId { get; set; }
         public virtual Department? Department { get; set; }
+
+        [ForeignKey (nameof(Community_Medical_Centers))]
+        public int Community_Medical_CentersId { get; set;}
+        public virtual Community_Medical_Centers? Community_Medical_Centers { get; set; }
+
         public virtual ICollection<Ref_Disciplines>? Ref_Disciplines { get; set; }
 
     }

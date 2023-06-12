@@ -43,5 +43,10 @@ namespace CMCDemo.Persistence.Repository
             }
             return ProfessionalStaff;
         }
+
+        public void UpdateProfessionalStaff(ProfessionalStaff professionalStaff)
+        {
+            Update(professionalStaff);
+        }
     }
 }

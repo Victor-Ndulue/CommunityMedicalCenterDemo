@@ -52,11 +52,13 @@ namespace CMCDemo.ServiceRepository.Services
             return MapProfessionalStaff;
         }
 
-        public async Task UpdateProfessionalStaffAsync(string Name, ProfessionalStaffForUpdate professsionalStaffForUpdate, bool trackChanges)
+        public async Task <ProfessionalStaffDto> UpdateProfessionalStaffAsync(string Name, ProfessionalStaffForUpdate professsionalStaffForUpdate, bool trackChanges)
         {
             var GetProfessionalStaff = await _repository.ProfessionalStaff.GetProfessionalStaffByName(Name, trackChanges);
-            _mapper.Map(professsionalStaffForUpdate, GetProfessionalStaff);
+            var mapPStaff = _mapper.Map(professsionalStaffForUpdate, GetProfessionalStaff);
+            _repository.ProfessionalStaff.UpdateProfessionalStaff(mapPStaff);
             await _repository.SaveAsync();
+            return _mapper.Map<ProfessionalStaffDto>(mapPStaff);
         }
     }
 }

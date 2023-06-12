@@ -40,5 +40,10 @@ namespace CMCDemo.Persistence.Repository
             }
             return Ref_Disciplines;
         }
+
+        public void UpdateRef_Disciplines(Ref_Disciplines ref_Disciplines)
+        {
+            Update(ref_Disciplines);
+        }
     }
 }

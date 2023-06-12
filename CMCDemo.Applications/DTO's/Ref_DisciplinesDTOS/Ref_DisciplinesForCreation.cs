@@ -19,5 +19,7 @@ namespace CMCDemo.Applications.DTO_s.Ref_DisciplinesDTOS
         [Required(ErrorMessage = "Date obtained discipline cannot be left vacant")]
         public DateTime? DateObtained { get; set; }
 
+        public int ProfessionalStaffId { get; set; }
+
     }
 }

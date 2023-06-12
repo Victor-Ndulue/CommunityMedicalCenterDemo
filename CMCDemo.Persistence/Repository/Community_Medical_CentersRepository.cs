@@ -20,6 +20,10 @@ namespace CMCDemo.Persistence.Repository
         {
             Create(community_Medical_Centers);
         }
+        public void UpdateCommunity_Medical_Centers(Community_Medical_Centers community_Medical_Centers)
+        {
+            Update(community_Medical_Centers);
+        }
 
         public void DeleteCommunity_Medical_Centers(Community_Medical_Centers community_Medical_Centers)
         {

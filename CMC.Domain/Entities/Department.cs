@@ -14,8 +14,8 @@ namespace CMCDemo.Domain.Entities
         public string? DepartmentChief { get; set; }
 
         [ForeignKey(nameof(Community_Medical_Centers))]
-        public int MedicalCenter_Id { get; set; }
-        public virtual Community_Medical_Centers? MedicalCenter { get; set; }
+        public int Community_Medical_CentersId { get; set; }
+        public virtual Community_Medical_Centers? Community_Medical_Centers { get; set; }
         public virtual  ICollection<ProfessionalStaff>? ProfessionalStaff { get; set; }
     }
 }

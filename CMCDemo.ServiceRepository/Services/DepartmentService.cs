@@ -29,7 +29,6 @@ namespace CMCDemo.ServiceRepository.Services
             _repository.Department.CreateDepartment(MapDepartment);
             await _repository.SaveAsync();
             return _mapper.Map<DepartmentDto>(creationDto);
-
         }
 
         public async Task DeleteDepartment(string Name, bool trackChanges)
@@ -58,6 +57,7 @@ namespace CMCDemo.ServiceRepository.Services
         {
             var GetDept = await _repository.Department.GetDepartmentByName(Name, trackChanges);
             var MapDept = _mapper.Map(departmentDto, GetDept);
+            _repository.Department.UpdateDepartment(MapDept);
             await _repository.SaveAsync();
             return _mapper.Map<DepartmentDto>(MapDept);
         }

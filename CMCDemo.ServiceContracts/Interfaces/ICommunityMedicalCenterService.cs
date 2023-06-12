@@ -13,7 +13,7 @@ namespace CMCDemo.ServiceContracts.Interfaces
         Task<IEnumerable<Community_Medical_CentersDto>> GetAllCMCDtoAsync(bool trackChanges);
         Task<Community_Medical_CentersDto> GetCMCDtoAsync(string Name, bool trackChanges);
         Task<Community_Medical_CentersDto> CreateCMCDto(Community_Medical_CentersForCreation creationDto);
-        Task UpdateCMCDto(string Name, Community_Medical_CentersForUpdate community_Medical_CentersForUpdate, bool trackChanges);
+        Task <Community_Medical_CentersDto> UpdateCMCDto(string Name, Community_Medical_CentersForUpdate community_Medical_CentersForUpdate, bool trackChanges);
         Task DeleteCMCDto(string Name, bool trackChanges);
     }
 }

@@ -42,5 +42,10 @@ namespace CMCDemo.Persistence.Repository
             }
             return Department;
         }
+
+        public void UpdateDepartment(Department department)
+        {
+            Update(department);
+        }
     }
 }

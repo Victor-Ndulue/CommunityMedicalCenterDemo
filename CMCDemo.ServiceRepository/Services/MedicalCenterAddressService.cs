@@ -22,12 +22,13 @@ namespace CMCDemo.ServiceRepository.Services
             _logger = logger;
             _mapper = mapper;
         }
-        public async Task<MedicalCenterAddressDto> CreateMedicalCenterAddress(MedicalCenterAddressForCreation creationDto) 
-        { 
-            var MapMCD = _mapper.Map<MedicalCenterAddress>(creationDto);
-            _repository.MedicalCenterAddress.CreateMedicalCenterAddress(MapMCD);
+        public async Task<MedicalCenterAddressDto> CreateMedicalCenterAddress(MedicalCenterAddressForCreation creationDto)
+        {
+            var mappedEntity = _mapper.Map<MedicalCenterAddress>(creationDto);
+            _repository.MedicalCenterAddress.CreateMedicalCenterAddress(mappedEntity);
             await _repository.SaveAsync();
-            return _mapper.Map<MedicalCenterAddressDto>(MapMCD);
+            var mappedDto = _mapper.Map<MedicalCenterAddressDto>(mappedEntity);
+            return mappedDto;
         }
 
         public async Task DeleteMedicalCenterAddress(string Name, bool trackChanges)
@@ -50,13 +51,14 @@ namespace CMCDemo.ServiceRepository.Services
             var MapMCD = _mapper.Map<MedicalCenterAddressDto>(GetMCD);
             return MapMCD;
         }
-
-        public async Task<MedicalCenterAddressDto> UpdateMedicalCenterAddress(string Name, MedicalCenterAddressDto Address, bool trackChanges)
+        
+        public async Task<MedicalCenterAddressDto> UpdateMedicalCenterAddress(string Name, MedicalCenterAddressForUpdate Address, bool trackChanges)
         {
-            var GetMCD = await _repository.MedicalCenterAddress.GetMedicalCenterAddressByName(Name, trackChanges);
-             var MapMCD = _mapper.Map(Address, GetMCD);
+            var GetAddress = await _repository.MedicalCenterAddress.GetMedicalCenterAddressByName(Name, trackChanges);
+            var MapAddress = _mapper.Map(Address, GetAddress);
+            _repository.MedicalCenterAddress.UpdateMedicalCenterAddress(MapAddress);
             await _repository.SaveAsync();
-            return _mapper.Map<MedicalCenterAddressDto>(MapMCD);
+            return _mapper.Map<MedicalCenterAddressDto>(MapAddress);
         }
     }
 }

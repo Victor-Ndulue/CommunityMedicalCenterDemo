@@ -52,11 +52,13 @@ namespace CMCDemo.ServiceRepository.Services
             return MapCMC;
         }
 
-        public async Task UpdateCMCDto(string Name, Community_Medical_CentersForUpdate community_Medical_CentersForUpdate, bool trackChanges)
+        public async Task <Community_Medical_CentersDto> UpdateCMCDto(string Name, Community_Medical_CentersForUpdate community_Medical_CentersForUpdate, bool trackChanges)
         {
             var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterByName(Name, trackChanges);
-            _mapper.Map(community_Medical_CentersForUpdate, GetCMC);
+            var MapCMC = _mapper.Map(community_Medical_CentersForUpdate, GetCMC);
+            _repository.Community_Medical_Centers.UpdateCommunity_Medical_Centers(MapCMC);
             await _repository.SaveAsync();
+            return _mapper.Map<Community_Medical_CentersDto>(MapCMC);
         }
     }
 }

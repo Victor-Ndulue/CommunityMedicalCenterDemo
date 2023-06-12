@@ -24,7 +24,7 @@ namespace CMCDemo.Domain.Entities
         [MaxLength(15, ErrorMessage = "City name cannot exceed 15 characters ")]
         public string? City { get; set; }
         [Required(ErrorMessage = "Field cannot be left empty. Please check all fields and fill the vacant")]
-        [MaxLength(10, ErrorMessage = "Postcode value cannot exceed 10 characters ")]
+        [Range (0, 9999, ErrorMessage = "Postcode value cannot exceed 10 characters ")]
         public int PostCode { get; set; }
         [Required(ErrorMessage = "Field cannot be left empty. Please check all fields and fill the vacant")]
         [MaxLength(15, ErrorMessage = "State name cannot exceed 15 characters ")]

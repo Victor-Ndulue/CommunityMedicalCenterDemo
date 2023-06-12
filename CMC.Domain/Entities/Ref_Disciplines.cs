@@ -5,7 +5,7 @@ namespace CMCDemo.Domain.Entities
 {
     public class Ref_Disciplines
     {
-        
+        [Key]
         public int Ref_DisciplinesId { get; set; }
 
         [Required]
@@ -16,7 +16,7 @@ namespace CMCDemo.Domain.Entities
         public DateTime? DateObtained { get; set; }
 
         [ForeignKey(nameof(ProfessionalStaff))]
-        public int ProfessionalStaff_Id { get; set; }
+        public int ProfessionalStaffId { get; set; }
         public virtual ProfessionalStaff? ProfessionalStaff { get; set;}
     }
 }

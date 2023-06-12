@@ -15,7 +15,7 @@ namespace CMCDemo.Domain.Entities
 
         [Required(ErrorMessage ="Medical Center Name cannot be left vacant")]
         [MaxLength(50, ErrorMessage ="Medical Center Name cannot exceed 50 charaacters")]
-        public string? MedicalCenterName;
+        public string? MedicalCenterName { get; set; }
         [Required(ErrorMessage = "Medical Center Manager Name cannot be left vacant")]
         [MaxLength(20, ErrorMessage = "Medical Center Name cannot exceed 20 charaacters")]
         public string? MedicalCenterManager { get; set; }
@@ -26,8 +26,8 @@ namespace CMCDemo.Domain.Entities
 
 
         [ForeignKey(nameof(MedicalCenterAddress))]
-        public int MedicalCenterAddress_Id { get; set; }
-        public virtual MedicalCenterAddress? Address { get; set; }
+        public int MedicalCenterAddressId { get; set; }
+        public MedicalCenterAddress? MedicalCenterAddress { get; set; }
 
         public virtual ICollection<Department>? Departments { get; set; }
         public virtual ICollection<ProfessionalStaff>? Staffs { get; set; }

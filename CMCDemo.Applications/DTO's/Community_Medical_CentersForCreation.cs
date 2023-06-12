@@ -22,5 +22,6 @@ namespace CMCDemo.Applications.DTO_s
         [MaxLength(13, ErrorMessage = "Phone number cannot exceed 13 charaacters")]
         [DataType(DataType.PhoneNumber)]
         public string? PhoneNumber { get; set; }
+        public int MedicalCenterAddressId { get; set; }
     }
 }

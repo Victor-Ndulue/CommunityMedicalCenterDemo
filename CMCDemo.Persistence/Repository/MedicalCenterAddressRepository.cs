@@ -21,6 +21,11 @@ namespace CMCDemo.Persistence.Repository
             Create(medicalCenterAddress);
         }
 
+        public void UpdateMedicalCenterAddress(MedicalCenterAddress medicalCenterAddress)
+        {
+            Update(medicalCenterAddress);
+        }
+
         public void DeleteMedicalCenterAddress(MedicalCenterAddress medicalCenterAddress)
         {
             Delete(medicalCenterAddress);

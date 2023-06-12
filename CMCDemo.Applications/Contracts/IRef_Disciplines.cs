@@ -13,6 +13,7 @@ namespace CMCDemo.Applications.Contracts
      
         Task<Ref_Disciplines> GetRef_DisciplinesByName(string name, bool trackchanges);
         void CreateRef_Disciplines(Ref_Disciplines entity);
+        void UpdateRef_Disciplines(Ref_Disciplines entity);
         void DeleteRef_Disciplines(Ref_Disciplines entity);
     }
 }

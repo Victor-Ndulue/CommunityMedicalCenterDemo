@@ -12,7 +12,7 @@ namespace CMCDemo.Applications.DTO_s
     public class Community_Medical_CentersDto
     {
         public int Id { get; set; }
-        public string? MedicalCenterName;
+        public string? MedicalCenterName { get; set; }
         public string? MedicalCenterManager { get; set; }
         public string? PhoneNumber { get; set; }
         public virtual MedicalCenterAddress? Address { get; set; }

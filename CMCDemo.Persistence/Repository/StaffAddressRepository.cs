@@ -23,7 +23,7 @@ namespace CMCDemo.Persistence.Repository
         public void DeleteStaffAddress(StaffAddress staffAddress)
         {
             Delete(staffAddress);
-        }
+        }        
 
         public async Task<IEnumerable<StaffAddress>> GetAllStaffAddressAsync(bool trackchanges)
         {
@@ -41,6 +41,10 @@ namespace CMCDemo.Persistence.Repository
             }
             return StaffAddress;
         }
-        
+
+        public void UpdateStaffAddress(StaffAddress staffAddress)
+        {
+            Update(staffAddress);
+        }
     }
 }

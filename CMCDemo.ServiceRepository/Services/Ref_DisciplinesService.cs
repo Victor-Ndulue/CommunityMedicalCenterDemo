@@ -57,6 +57,7 @@ namespace CMCDemo.ServiceRepository.Services
         {
             var GetRef = await _repository.Ref_Disciplines.GetRef_DisciplinesByName(Name, trackChanges);
             var MapRef = _mapper.Map(updatedDto, GetRef);
+            _repository.Ref_Disciplines.UpdateRef_Disciplines(MapRef);
             await _repository.SaveAsync();
             return _mapper.Map<Ref_DisciplinesDto>(MapRef);
         }

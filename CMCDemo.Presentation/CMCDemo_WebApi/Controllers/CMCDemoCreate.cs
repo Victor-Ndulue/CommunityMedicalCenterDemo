@@ -29,9 +29,9 @@ namespace CMCDemo_WebApi.Controllers
         }
 
         [HttpPost("Create Medical Center Address")]
-        public async Task<IActionResult> InsertMedicalCenterAddress(MedicalCenterAddressForCreation medicalCenterAddressForCreation)
+        public async Task<IActionResult> InsertMedicalCenterAddress(MedicalCenterAddressForCreation creationDto)
         {
-            var MedCenterAddress = await _serviceManager.MedicalCenterAddressService.CreateMedicalCenterAddress(medicalCenterAddressForCreation);
+            var MedCenterAddress = await _serviceManager.MedicalCenterAddressService.CreateMedicalCenterAddress(creationDto);
             return Ok(MedCenterAddress);
         }
 

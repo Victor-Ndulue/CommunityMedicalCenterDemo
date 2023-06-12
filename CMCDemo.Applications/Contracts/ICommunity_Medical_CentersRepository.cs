@@ -12,6 +12,7 @@ namespace CMCDemo.Applications.Contracts
         Task<IEnumerable<Community_Medical_Centers>> GetAllCommunity_Medical_CenterAsync(bool trackchanges);
         Task<Community_Medical_Centers> GetCommunity_Medical_CenterByName(string Name, bool trackchanges);
         void CreateCommunity_Medical_Centers(Community_Medical_Centers entity);
+        public void UpdateCommunity_Medical_Centers(Community_Medical_Centers entity);
         void DeleteCommunity_Medical_Centers(Community_Medical_Centers entity);
     }
 }
