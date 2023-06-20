@@ -25,36 +25,46 @@ namespace CMCDemo.ServiceRepository.Services
         }
         public async Task<Community_Medical_CentersDto> CreateCMCDto(Community_Medical_CentersForCreation creationDto)
         {
+            var Address = _repository.MedicalCenterAddress.GetMedicalCenterAddressById(creationDto.MedicalCenterAddressId, trackchanges:false);
+            creationDto.medicalCenterAddress = Address;
             var MapCMC = _mapper.Map<Community_Medical_Centers>(creationDto);
-            _repository.Community_Medical_Centers.CreateCommunity_Medical_Centers(MapCMC);
+            _repository.Community_Medical_Centers.CreateCommunity_Medical_Centers(MapCMC);            
             await _repository.SaveAsync();
             return _mapper.Map<Community_Medical_CentersDto>(MapCMC);
         }
 
-        public async Task DeleteCMCDto(string Name, bool trackChanges)
+        public async Task DeleteCMCDto(int Id, bool trackChanges)
         {
-            var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterByName(Name, trackChanges);
+            var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterById(Id, trackChanges);
             _repository.Community_Medical_Centers.DeleteCommunity_Medical_Centers(GetCMC);
             await _repository.SaveAsync();
         }
 
         public async Task<IEnumerable<Community_Medical_CentersDto>> GetAllCMCDtoAsync(bool trackChanges)
         {
-            var GetCMC = await _repository.Community_Medical_Centers.GetAllCommunity_Medical_CenterAsync(trackChanges);
-            var MapCMC = _mapper.Map<IEnumerable<Community_Medical_CentersDto>>(GetCMC);
-            return MapCMC;
+            try
+            {
+                var GetCMC = await _repository.Community_Medical_Centers.GetAllCommunity_Medical_CenterAsync(trackChanges);
+                var MapCMC = _mapper.Map<IEnumerable<Community_Medical_CentersDto>>(GetCMC);
+                return MapCMC;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"There was an error calling name of {GetAllCMCDtoAsync}. Error {ex}");
+                throw;
+            }
         }
 
-        public async Task<Community_Medical_CentersDto> GetCMCDtoAsync(string Name, bool trackChanges)
+        public async Task<Community_Medical_CentersDto> GetCMCDtoAsync(int Id, bool trackChanges)
         {
-            var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterByName(Name, trackChanges);
+            var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterById(Id, trackChanges);
             var MapCMC = _mapper.Map<Community_Medical_CentersDto>(GetCMC);
             return MapCMC;
         }
 
-        public async Task <Community_Medical_CentersDto> UpdateCMCDto(string Name, Community_Medical_CentersForUpdate community_Medical_CentersForUpdate, bool trackChanges)
+        public async Task <Community_Medical_CentersDto> UpdateCMCDto(int Id, Community_Medical_CentersForUpdate community_Medical_CentersForUpdate, bool trackChanges)
         {
-            var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterByName(Name, trackChanges);
+            var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterById(Id, trackChanges);
             var MapCMC = _mapper.Map(community_Medical_CentersForUpdate, GetCMC);
             _repository.Community_Medical_Centers.UpdateCommunity_Medical_Centers(MapCMC);
             await _repository.SaveAsync();

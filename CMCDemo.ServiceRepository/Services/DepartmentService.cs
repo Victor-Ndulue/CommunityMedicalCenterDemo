@@ -31,9 +31,9 @@ namespace CMCDemo.ServiceRepository.Services
             return _mapper.Map<DepartmentDto>(creationDto);
         }
 
-        public async Task DeleteDepartment(string Name, bool trackChanges)
+        public async Task DeleteDepartment(int Id, bool trackChanges)
         {
-            var GetDepartment = await _repository.Department.GetDepartmentByName(Name, trackChanges);
+            var GetDepartment = await _repository.Department.GetDepartmentById(Id, trackChanges);
             _repository.Department.DeleteDepartment(GetDepartment);
             await _repository.SaveAsync();
         }
@@ -46,16 +46,16 @@ namespace CMCDemo.ServiceRepository.Services
 
         }
 
-        public async Task<DepartmentDto> GetDepartmentDto(string Name, bool trackChanges)
+        public async Task<DepartmentDto> GetDepartmentDto(int Id, bool trackChanges)
         {
-            var GetDept = await _repository.Department.GetDepartmentByName(Name, trackChanges);
+            var GetDept = await _repository.Department.GetDepartmentById(Id, trackChanges);
             var MapDept = _mapper.Map<DepartmentDto>(GetDept);
             return MapDept;
         }
 
-        public async Task<DepartmentDto> UpdateDepartment(string Name, DepartmentForUpdate departmentDto, bool trackChanges)
+        public async Task<DepartmentDto> UpdateDepartment(int Id, DepartmentForUpdate departmentDto, bool trackChanges)
         {
-            var GetDept = await _repository.Department.GetDepartmentByName(Name, trackChanges);
+            var GetDept = await _repository.Department.GetDepartmentById(Id, trackChanges);
             var MapDept = _mapper.Map(departmentDto, GetDept);
             _repository.Department.UpdateDepartment(MapDept);
             await _repository.SaveAsync();

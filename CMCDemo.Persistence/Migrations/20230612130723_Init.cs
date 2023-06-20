@@ -131,7 +131,7 @@ namespace CMCDemo.Persistence.Migrations
                         column: x => x.Community_Medical_CentersId,
                         principalTable: "Community_Medical_Centers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

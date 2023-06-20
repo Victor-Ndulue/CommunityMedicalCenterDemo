@@ -5,7 +5,7 @@
 namespace CMCDemo.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class migration1 : Migration
+    public partial class testingData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

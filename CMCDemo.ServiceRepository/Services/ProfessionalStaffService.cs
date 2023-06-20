@@ -31,9 +31,9 @@ namespace CMCDemo.ServiceRepository.Services
             return _mapper.Map<ProfessionalStaffDto>(ProfessionalStaffMapped);
         }
 
-        public async Task DeleteProfessionalStaffAsync(string Name, bool trackChanges)
+        public async Task DeleteProfessionalStaffAsync(int Id, bool trackChanges)
         {
-            var GetProfessionalStaff = await _repository.ProfessionalStaff.GetProfessionalStaffByName(Name, trackChanges);
+            var GetProfessionalStaff = await _repository.ProfessionalStaff.GetProfessionalStaffById(Id, trackChanges);
             _repository.ProfessionalStaff.DeleteProfessionalStaff(GetProfessionalStaff);
             await _repository.SaveAsync();
         }
@@ -45,16 +45,16 @@ namespace CMCDemo.ServiceRepository.Services
             return MapProfessionalStaffs;
         }
 
-        public async Task<ProfessionalStaffDto> GetProfessionalStaffDtoAsync(string Name, bool trackChanges)
+        public async Task<ProfessionalStaffDto> GetProfessionalStaffDtoAsync(int Id, bool trackChanges)
         {
-            var GetProfessionalstaff = await _repository.ProfessionalStaff.GetProfessionalStaffByName(Name, trackChanges);
+            var GetProfessionalstaff = await _repository.ProfessionalStaff.GetProfessionalStaffById(Id, trackChanges);
             var MapProfessionalStaff = _mapper.Map<ProfessionalStaffDto>(GetProfessionalstaff);
             return MapProfessionalStaff;
         }
 
-        public async Task <ProfessionalStaffDto> UpdateProfessionalStaffAsync(string Name, ProfessionalStaffForUpdate professsionalStaffForUpdate, bool trackChanges)
+        public async Task <ProfessionalStaffDto> UpdateProfessionalStaffAsync(int Id, ProfessionalStaffForUpdate professsionalStaffForUpdate, bool trackChanges)
         {
-            var GetProfessionalStaff = await _repository.ProfessionalStaff.GetProfessionalStaffByName(Name, trackChanges);
+            var GetProfessionalStaff = await _repository.ProfessionalStaff.GetProfessionalStaffById(Id, trackChanges);
             var mapPStaff = _mapper.Map(professsionalStaffForUpdate, GetProfessionalStaff);
             _repository.ProfessionalStaff.UpdateProfessionalStaff(mapPStaff);
             await _repository.SaveAsync();

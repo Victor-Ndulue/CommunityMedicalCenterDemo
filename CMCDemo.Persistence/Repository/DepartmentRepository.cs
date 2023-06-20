@@ -33,9 +33,9 @@ namespace CMCDemo.Persistence.Repository
                 .ToListAsync();
         }
 
-        public async Task<Department> GetDepartmentByName(string Name, bool trackchanges)
+        public async Task<Department> GetDepartmentById(int Id, bool trackchanges)
         {
-            var Department = await FindByCondition(x => x.DepartmentName !=null && x.DepartmentName.Contains (Name), trackchanges).FirstOrDefaultAsync();
+            var Department = await FindByCondition(x => x.Id.Equals(Id), trackchanges).FirstOrDefaultAsync();
             if (Department == null)
             {
                 throw new ArgumentException("Department not found!");

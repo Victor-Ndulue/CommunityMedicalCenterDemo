@@ -31,9 +31,9 @@ namespace CMCDemo.ServiceRepository.Services
             return mappedDto;
         }
 
-        public async Task DeleteMedicalCenterAddress(string Name, bool trackChanges)
+        public async Task DeleteMedicalCenterAddress(int Id, bool trackChanges)
         {
-            var GetMCD = await _repository.MedicalCenterAddress.GetMedicalCenterAddressByName(Name, trackChanges);
+            var GetMCD = await _repository.MedicalCenterAddress.GetMedicalCenterAddressById(Id, trackChanges);
             _repository.MedicalCenterAddress.DeleteMedicalCenterAddress(GetMCD);
             await _repository.SaveAsync();
         }
@@ -45,16 +45,16 @@ namespace CMCDemo.ServiceRepository.Services
             return MapMCD;
         }
 
-        public async Task<MedicalCenterAddressDto> GetMedicalCenterAddressByName(string Name, bool trackChanges)
+        public async Task<MedicalCenterAddressDto> GetMedicalCenterAddressById(int Id, bool trackChanges)
         {
-            var GetMCD = await _repository.MedicalCenterAddress.GetMedicalCenterAddressByName(Name, trackChanges);
+            var GetMCD = await _repository.MedicalCenterAddress.GetMedicalCenterAddressById(Id, trackChanges);
             var MapMCD = _mapper.Map<MedicalCenterAddressDto>(GetMCD);
             return MapMCD;
         }
         
-        public async Task<MedicalCenterAddressDto> UpdateMedicalCenterAddress(string Name, MedicalCenterAddressForUpdate Address, bool trackChanges)
+        public async Task<MedicalCenterAddressDto> UpdateMedicalCenterAddress(int Id, MedicalCenterAddressForUpdate Address, bool trackChanges)
         {
-            var GetAddress = await _repository.MedicalCenterAddress.GetMedicalCenterAddressByName(Name, trackChanges);
+            var GetAddress = await _repository.MedicalCenterAddress.GetMedicalCenterAddressById(Id, trackChanges);
             var MapAddress = _mapper.Map(Address, GetAddress);
             _repository.MedicalCenterAddress.UpdateMedicalCenterAddress(MapAddress);
             await _repository.SaveAsync();

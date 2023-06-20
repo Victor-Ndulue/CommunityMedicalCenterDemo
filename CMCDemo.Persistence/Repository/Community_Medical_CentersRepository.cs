@@ -37,9 +37,9 @@ namespace CMCDemo.Persistence.Repository
                 .ToListAsync();
         }
 
-        public async Task<Community_Medical_Centers> GetCommunity_Medical_CenterByName(string Name, bool trackchanges)
+        public async Task<Community_Medical_Centers> GetCommunity_Medical_CenterById(int Id, bool trackchanges)
         {
-            var Community_Medical_Center = await FindByCondition(x => x.MedicalCenterName != null && x.MedicalCenterName.Contains(Name), trackchanges).FirstOrDefaultAsync();
+            var Community_Medical_Center = await FindByCondition(x => x.Id.Equals(Id), trackchanges).FirstOrDefaultAsync();
             if (Community_Medical_Center == null)
             {
                 throw new Exception("Medical Center not found!");

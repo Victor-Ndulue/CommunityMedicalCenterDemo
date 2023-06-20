@@ -32,9 +32,9 @@ namespace CMCDemo.Persistence.Repository
                 .ToListAsync();
         }
 
-        public async Task<StaffAddress> GetStaffAddressByName(string Name, bool trackchanges)
+        public async Task<StaffAddress> GetStaffAddressById(int Id, bool trackchanges)
         {
-            var StaffAddress = await FindByCondition(x => x.StreetName != null && x.StreetName.Contains(Name), trackchanges).FirstOrDefaultAsync(); 
+            var StaffAddress = await FindByCondition(x =>x.Id.Equals(Id), trackchanges).FirstOrDefaultAsync(); 
             if (StaffAddress == null)
             {
                 throw new Exception("Staff address not found!");

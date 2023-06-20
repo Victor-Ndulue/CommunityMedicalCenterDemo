@@ -31,9 +31,9 @@ namespace CMCDemo.ServiceRepository.Services
             return _mapper.Map<StaffAddressDto>(MapStA);
         }
 
-        public async Task DeleteStaffAddressAsync(string Name, bool trackChanges)
+        public async Task DeleteStaffAddressAsync(int Id, bool trackChanges)
         {
-            var GetStA = await _repository.StaffAddress.GetStaffAddressByName(Name, trackChanges);
+            var GetStA = await _repository.StaffAddress.GetStaffAddressById(Id, trackChanges);
             _repository.StaffAddress.DeleteStaffAddress(GetStA);
             await _repository.SaveAsync();
         }
@@ -45,16 +45,16 @@ namespace CMCDemo.ServiceRepository.Services
             return MapStA;
         }
 
-        public async Task<StaffAddressDto> GetStaffAddressDtoAsync(string Name, bool trackChanges)
+        public async Task<StaffAddressDto> GetStaffAddressDtoAsync(int Id, bool trackChanges)
         {
-            var GetStA = await _repository.StaffAddress.GetStaffAddressByName(Name, trackChanges);
+            var GetStA = await _repository.StaffAddress.GetStaffAddressById(Id, trackChanges);
             var MapStA = _mapper.Map<StaffAddressDto>(GetStA);
             return MapStA;
         }
 
-        public async Task<StaffAddressDto> UpdateStaffAddress(string Name, StaffAddressForUpdate staffAddressForUpdate, bool trackChanges)
+        public async Task<StaffAddressDto> UpdateStaffAddress(int Id, StaffAddressForUpdate staffAddressForUpdate, bool trackChanges)
         {
-            var GetStA = await _repository.StaffAddress.GetStaffAddressByName(Name, trackChanges);
+            var GetStA = await _repository.StaffAddress.GetStaffAddressById(Id, trackChanges);
             var MapStA = _mapper.Map(staffAddressForUpdate, GetStA);
             _repository.StaffAddress.UpdateStaffAddress(MapStA);
             await _repository.SaveAsync();

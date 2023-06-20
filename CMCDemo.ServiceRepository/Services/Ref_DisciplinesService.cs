@@ -31,9 +31,9 @@ namespace CMCDemo.ServiceRepository.Services
             return _mapper.Map<Ref_DisciplinesDto>(MapRef);
         }
 
-        public async Task DeleteRef_DisciplinesAsync(string Name, bool trackChanges)
+        public async Task DeleteRef_DisciplinesAsync(int Id, bool trackChanges)
         {
-            var GetRef = await _repository.Ref_Disciplines.GetRef_DisciplinesByName(Name, trackChanges);
+            var GetRef = await _repository.Ref_Disciplines.GetRef_DisciplinesById(Id, trackChanges);
             _repository.Ref_Disciplines.DeleteRef_Disciplines(GetRef);
             await _repository.SaveAsync();
         }
@@ -46,16 +46,16 @@ namespace CMCDemo.ServiceRepository.Services
 
         }
 
-        public async Task<Ref_DisciplinesDto> GetDisciplinesAsync(string Name, bool trackChanges)
+        public async Task<Ref_DisciplinesDto> GetDisciplinesAsync(int Id, bool trackChanges)
         {
-            var GetRef = await _repository.Ref_Disciplines.GetRef_DisciplinesByName(Name, trackChanges);
+            var GetRef = await _repository.Ref_Disciplines.GetRef_DisciplinesById(Id, trackChanges);
             var MapRef = _mapper.Map<Ref_DisciplinesDto>(GetRef);
             return MapRef;
         }
 
-        public async Task<Ref_DisciplinesDto> UpdateRef_Disciplines(string Name, Ref_DisciplinesForUpdate updatedDto, bool trackChanges)
+        public async Task<Ref_DisciplinesDto> UpdateRef_Disciplines(int Id, Ref_DisciplinesForUpdate updatedDto, bool trackChanges)
         {
-            var GetRef = await _repository.Ref_Disciplines.GetRef_DisciplinesByName(Name, trackChanges);
+            var GetRef = await _repository.Ref_Disciplines.GetRef_DisciplinesById(Id, trackChanges);
             var MapRef = _mapper.Map(updatedDto, GetRef);
             _repository.Ref_Disciplines.UpdateRef_Disciplines(MapRef);
             await _repository.SaveAsync();

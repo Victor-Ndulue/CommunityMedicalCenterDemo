@@ -11,7 +11,7 @@ namespace CMCDemo.Applications.Contracts
     {
         Task<IEnumerable<Ref_Disciplines>> GetAllRef_DisciplinesAsync(bool trackchanges);
      
-        Task<Ref_Disciplines> GetRef_DisciplinesByName(string name, bool trackchanges);
+        Task<Ref_Disciplines> GetRef_DisciplinesById(int Id, bool trackchanges);
         void CreateRef_Disciplines(Ref_Disciplines entity);
         void UpdateRef_Disciplines(Ref_Disciplines entity);
         void DeleteRef_Disciplines(Ref_Disciplines entity);

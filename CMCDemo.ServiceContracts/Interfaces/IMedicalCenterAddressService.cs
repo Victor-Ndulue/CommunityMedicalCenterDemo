@@ -10,9 +10,9 @@ namespace CMCDemo.ServiceContracts.Interfaces
     public interface IMedicalCenterAddressService
     {
         Task<IEnumerable<MedicalCenterAddressDto>> GetAllMedicalCenterAddress(bool trackChanges);
-        Task<MedicalCenterAddressDto> GetMedicalCenterAddressByName(string Name, bool trackChanges);
+        Task<MedicalCenterAddressDto> GetMedicalCenterAddressById(int Id, bool trackChanges);
         Task<MedicalCenterAddressDto> CreateMedicalCenterAddress(MedicalCenterAddressForCreation creationDto);
-        Task<MedicalCenterAddressDto> UpdateMedicalCenterAddress(string Name, MedicalCenterAddressForUpdate Address, bool trackChanges);
-        Task DeleteMedicalCenterAddress(string Name, bool trackChanges);
+        Task<MedicalCenterAddressDto> UpdateMedicalCenterAddress(int Id, MedicalCenterAddressForUpdate Address, bool trackChanges);
+        Task DeleteMedicalCenterAddress(int Id, bool trackChanges);
     }
 }

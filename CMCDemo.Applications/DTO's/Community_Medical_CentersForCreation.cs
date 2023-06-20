@@ -23,5 +23,6 @@ namespace CMCDemo.Applications.DTO_s
         [DataType(DataType.PhoneNumber)]
         public string? PhoneNumber { get; set; }
         public int MedicalCenterAddressId { get; set; }
+        public object?  medicalCenterAddress { get; set; }
     }
 }

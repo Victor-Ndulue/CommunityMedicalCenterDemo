@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CMCDemo.Persistence.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20230608220724_update5")]
-    partial class update5
+    [Migration("20230620111455_New")]
+    partial class New
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,16 +33,18 @@ namespace CMCDemo.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AddressId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MedicalCenterAddress_Id")
+                    b.Property<int>("MedicalCenterAddressId")
                         .HasColumnType("int");
 
                     b.Property<string>("MedicalCenterManager")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("MedicalCenterName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -51,7 +53,7 @@ namespace CMCDemo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
+                    b.HasIndex("MedicalCenterAddressId");
 
                     b.ToTable("Community_Medical_Centers");
                 });
@@ -64,6 +66,9 @@ namespace CMCDemo.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Community_Medical_CentersId")
+                        .HasColumnType("int");
+
                     b.Property<string>("DepartmentChief")
                         .HasColumnType("nvarchar(max)");
 
@@ -71,15 +76,9 @@ namespace CMCDemo.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MedicalCenterId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MedicalCenter_Id")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("MedicalCenterId");
+                    b.HasIndex("Community_Medical_CentersId");
 
                     b.ToTable("Departments");
                 });
@@ -117,7 +116,6 @@ namespace CMCDemo.Persistence.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<int>("PostCode")
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<string>("State")
@@ -143,6 +141,9 @@ namespace CMCDemo.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Community_Medical_CentersId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateBirthed")
                         .HasColumnType("datetime2");
 
@@ -152,7 +153,7 @@ namespace CMCDemo.Persistence.Migrations
                     b.Property<DateTime>("DateLeftCenter")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Department_Id")
+                    b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -170,26 +171,20 @@ namespace CMCDemo.Persistence.Migrations
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
 
-                    b.Property<int?>("MedicalCenterId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MedicalCenter_Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StaffAddress_Id")
+                    b.Property<int>("StaffAddressId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Department_Id");
+                    b.HasIndex("Community_Medical_CentersId");
 
-                    b.HasIndex("MedicalCenterId");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("StaffAddress_Id");
+                    b.HasIndex("StaffAddressId");
 
                     b.ToTable("ProfessionalStaffs");
                 });
@@ -214,12 +209,12 @@ namespace CMCDemo.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProfessionalStaff_Id")
+                    b.Property<int>("ProfessionalStaffId")
                         .HasColumnType("int");
 
                     b.HasKey("Ref_DisciplinesId");
 
-                    b.HasIndex("ProfessionalStaff_Id");
+                    b.HasIndex("ProfessionalStaffId");
 
                     b.ToTable("Ref_Disciplines");
                 });
@@ -257,7 +252,6 @@ namespace CMCDemo.Persistence.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.Property<int>("PostCode")
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<string>("State")
@@ -277,43 +271,49 @@ namespace CMCDemo.Persistence.Migrations
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.Community_Medical_Centers", b =>
                 {
-                    b.HasOne("CMCDemo.Domain.Entities.MedicalCenterAddress", "Address")
+                    b.HasOne("CMCDemo.Domain.Entities.MedicalCenterAddress", "MedicalCenterAddress")
                         .WithMany("MedicalCenters")
-                        .HasForeignKey("AddressId");
+                        .HasForeignKey("MedicalCenterAddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Address");
+                    b.Navigation("MedicalCenterAddress");
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.Department", b =>
                 {
-                    b.HasOne("CMCDemo.Domain.Entities.Community_Medical_Centers", "MedicalCenter")
+                    b.HasOne("CMCDemo.Domain.Entities.Community_Medical_Centers", "Community_Medical_Centers")
                         .WithMany("Departments")
-                        .HasForeignKey("MedicalCenterId");
+                        .HasForeignKey("Community_Medical_CentersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("MedicalCenter");
+                    b.Navigation("Community_Medical_Centers");
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.ProfessionalStaff", b =>
                 {
-                    b.HasOne("CMCDemo.Domain.Entities.Department", "Department")
-                        .WithMany("ProfessionalStaff")
-                        .HasForeignKey("Department_Id")
+                    b.HasOne("CMCDemo.Domain.Entities.Community_Medical_Centers", "Community_Medical_Centers")
+                        .WithMany("Staffs")
+                        .HasForeignKey("Community_Medical_CentersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CMCDemo.Domain.Entities.Community_Medical_Centers", "MedicalCenter")
-                        .WithMany("Staffs")
-                        .HasForeignKey("MedicalCenterId");
+                    b.HasOne("CMCDemo.Domain.Entities.Department", "Department")
+                        .WithMany("ProfessionalStaff")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("CMCDemo.Domain.Entities.StaffAddress", "StaffAddress")
                         .WithMany("ProfessionalStaff")
-                        .HasForeignKey("StaffAddress_Id")
+                        .HasForeignKey("StaffAddressId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Department");
+                    b.Navigation("Community_Medical_Centers");
 
-                    b.Navigation("MedicalCenter");
+                    b.Navigation("Department");
 
                     b.Navigation("StaffAddress");
                 });
@@ -322,7 +322,7 @@ namespace CMCDemo.Persistence.Migrations
                 {
                     b.HasOne("CMCDemo.Domain.Entities.ProfessionalStaff", "ProfessionalStaff")
                         .WithMany("Ref_Disciplines")
-                        .HasForeignKey("ProfessionalStaff_Id")
+                        .HasForeignKey("ProfessionalStaffId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
