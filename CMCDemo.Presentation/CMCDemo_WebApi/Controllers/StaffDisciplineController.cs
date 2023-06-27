@@ -1,6 +1,5 @@
 ﻿using CMCDemo.Applications.DTO_s.Ref_DisciplinesDTOS;
 using CMCDemo.ServiceContracts.IServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMCDemo_WebApi.Controllers

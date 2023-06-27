@@ -3,12 +3,6 @@ using CMCDemo.Applications.Common;
 using CMCDemo.Applications.DTO_s.Ref_DisciplinesDTOS;
 using CMCDemo.Domain.Entities;
 using CMCDemo.ServiceContracts.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.ServiceRepository.Services
 {

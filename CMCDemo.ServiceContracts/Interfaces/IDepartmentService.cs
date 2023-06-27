@@ -1,9 +1,4 @@
 ﻿using CMCDemo.Applications.DTO_s.DepartmentDTOS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.ServiceContracts.Interfaces
 {

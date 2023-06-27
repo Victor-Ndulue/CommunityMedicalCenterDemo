@@ -5,7 +5,7 @@ namespace CMCDemo.Domain.Entities
 {
     public class Department
     {
-        [Key] 
+        [Key]
         public int Id { get; set; }
 
 
@@ -16,6 +16,6 @@ namespace CMCDemo.Domain.Entities
         [ForeignKey(nameof(Community_Medical_Centers))]
         public int Community_Medical_CentersId { get; set; }
         public virtual Community_Medical_Centers? Community_Medical_Centers { get; set; }
-        public virtual  ICollection<ProfessionalStaff>? ProfessionalStaff { get; set; }
+        public virtual ICollection<ProfessionalStaff>? ProfessionalStaff { get; set; }
     }
 }

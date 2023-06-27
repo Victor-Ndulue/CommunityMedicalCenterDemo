@@ -2,7 +2,7 @@
 
 namespace CMCDemo.Domain.Entities
 {
-    public class StaffAddress:CommonAddress
+    public class StaffAddress : CommonAddress
     {
         [Key]
         public int Id { get; set; }

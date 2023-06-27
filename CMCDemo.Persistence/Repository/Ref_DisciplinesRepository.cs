@@ -2,11 +2,6 @@
 using CMCDemo.Domain.Entities;
 using CMCDemo.Persistence.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.Persistence.Repository
 {
@@ -27,7 +22,7 @@ namespace CMCDemo.Persistence.Repository
         public async Task<IEnumerable<Ref_Disciplines>> GetAllRef_DisciplinesAsync(bool trackchanges)
         {
             return await GetAllAsync(trackchanges)
-                .OrderBy(x=>x.Ref_DisciplinesId)
+                .OrderBy(x => x.Ref_DisciplinesId)
                 .ToListAsync();
         }
 

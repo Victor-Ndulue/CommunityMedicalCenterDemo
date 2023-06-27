@@ -1,11 +1,5 @@
-﻿using CMCDemo.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using CMCDemo.Applications.DTO_s.MedicalCenterAddressDTOS;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.Applications.DTO_s
 {
@@ -22,7 +16,7 @@ namespace CMCDemo.Applications.DTO_s
         [MaxLength(13, ErrorMessage = "Phone number cannot exceed 13 charaacters")]
         [DataType(DataType.PhoneNumber)]
         public string? PhoneNumber { get; set; }
-        public int MedicalCenterAddressId { get; set; }
-        public object?  medicalCenterAddress { get; set; }
+        public int MedicalCenterAddressId;
+        public MedicalCenterAddressForCreation? MedicalCenterAddress { get; set; }
     }
 }

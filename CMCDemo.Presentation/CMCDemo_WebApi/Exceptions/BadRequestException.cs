@@ -1,7 +1,7 @@
 ﻿namespace CMCDemo_WebApi.Exceptions
 {
-    public abstract class BadRequestException:Exception
+    public abstract class BadRequestException : Exception
     {
-        protected BadRequestException(string Message):base(Message) { }
+        protected BadRequestException(string Message) : base(Message) { }
     }
 }

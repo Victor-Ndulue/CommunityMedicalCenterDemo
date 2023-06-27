@@ -2,7 +2,7 @@
 {
     public class IdParameterBadRequestException : Exception
     {
-        protected IdParameterBadRequestException():base("Parameter Id is null") 
+        protected IdParameterBadRequestException() : base("Parameter Id is null")
         {
         }
     }

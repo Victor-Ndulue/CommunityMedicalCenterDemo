@@ -1,10 +1,4 @@
-﻿using CMCDemo.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CMCDemo.Applications.DTO_s.MedicalCenterAddressDTOS
 {
@@ -25,7 +19,7 @@ namespace CMCDemo.Applications.DTO_s.MedicalCenterAddressDTOS
         [MaxLength(15, ErrorMessage = "City name cannot exceed 15 characters ")]
         public string? City { get; set; }
         [Required(ErrorMessage = "Field cannot be left empty. Please check all fields and fill the vacant")]
-        [Range (0, 9999, ErrorMessage = "Postcode value cannot exceed 10 characters ")]
+        [Range(0, 9999, ErrorMessage = "Postcode value cannot exceed 10 characters ")]
         [DataType(DataType.PostalCode)]
         public int PostCode { get; set; }
         [Required(ErrorMessage = "Field cannot be left empty. Please check all fields and fill the vacant")]

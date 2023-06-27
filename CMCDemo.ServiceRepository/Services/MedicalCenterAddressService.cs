@@ -3,11 +3,6 @@ using CMCDemo.Applications.Common;
 using CMCDemo.Applications.DTO_s.MedicalCenterAddressDTOS;
 using CMCDemo.Domain.Entities;
 using CMCDemo.ServiceContracts.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.ServiceRepository.Services
 {
@@ -51,7 +46,7 @@ namespace CMCDemo.ServiceRepository.Services
             var MapMCD = _mapper.Map<MedicalCenterAddressDto>(GetMCD);
             return MapMCD;
         }
-        
+
         public async Task<MedicalCenterAddressDto> UpdateMedicalCenterAddress(int Id, MedicalCenterAddressForUpdate Address, bool trackChanges)
         {
             var GetAddress = await _repository.MedicalCenterAddress.GetMedicalCenterAddressById(Id, trackChanges);

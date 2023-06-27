@@ -2,11 +2,6 @@
 using CMCDemo.Domain.Entities;
 using CMCDemo.Persistence.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.Persistence.Repository
 {
@@ -30,13 +25,13 @@ namespace CMCDemo.Persistence.Repository
         {
             return await GetAllAsync(trackchanges)
 
-                .OrderBy(x=> x.Id)
+                .OrderBy(x => x.Id)
                 .ToListAsync();
         }
 
         public async Task<ProfessionalStaff> GetProfessionalStaffById(int Id, bool trackchanges)
         {
-            var ProfessionalStaff = await FindByCondition(x =>x.Id.Equals(Id), trackchanges).FirstOrDefaultAsync();
+            var ProfessionalStaff = await FindByCondition(x => x.Id.Equals(Id), trackchanges).FirstOrDefaultAsync();
             if (ProfessionalStaff == null)
             {
                 throw new Exception("Staff not found!");

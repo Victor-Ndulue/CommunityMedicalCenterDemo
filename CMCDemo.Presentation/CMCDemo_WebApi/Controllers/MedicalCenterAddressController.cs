@@ -1,6 +1,5 @@
 ﻿using CMCDemo.Applications.DTO_s.MedicalCenterAddressDTOS;
 using CMCDemo.ServiceContracts.IServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMCDemo_WebApi.Controllers
@@ -12,7 +11,7 @@ namespace CMCDemo_WebApi.Controllers
         private readonly IServiceManager _serviceManager;
         public MedicalCenterAddressController(IServiceManager serviceManager)
         {
-            _serviceManager=serviceManager;
+            _serviceManager = serviceManager;
         }
 
         [HttpPost("medicalcenteraddress/create")]
@@ -29,21 +28,21 @@ namespace CMCDemo_WebApi.Controllers
             return Ok(MedicalCenterAddress);
         }
 
-        [HttpGet("medicalcenteraddress/{id}")]
-        public  async Task <IActionResult> GetMedicalCenterAddress( int Id)
+        [HttpGet("medicalcenteraddress/id")]
+        public async Task<IActionResult> GetMedicalCenterAddress(int Id)
         {
-            var MedCenterAddress= await _serviceManager.MedicalCenterAddressService.GetMedicalCenterAddressById(Id, trackChanges: false);
-            return Ok(MedCenterAddress );
+            var MedCenterAddress = await _serviceManager.MedicalCenterAddressService.GetMedicalCenterAddressById(Id, trackChanges: false);
+            return Ok(MedCenterAddress);
         }
 
-        [HttpPut("medicalcenteraddress/update/{id}")]
+        [HttpPut("medicalcenteraddress/update/id")]
         public async Task<IActionResult> UpdateMedicalCenteraddress(int Id, MedicalCenterAddressForUpdate medicalCenterAddressForUpdate)
         {
             var medAddress = await _serviceManager.MedicalCenterAddressService.UpdateMedicalCenterAddress(Id, medicalCenterAddressForUpdate, trackChanges: false);
             return Ok(medAddress);
         }
 
-        [HttpDelete("medicalcenteraddress/delete/{id}")]
+        [HttpDelete("medicalcenteraddress/delete/id")]
         public async Task DeleteMedicalCenterAddress(int Id)
         {
             await _serviceManager.MedicalCenterAddressService.DeleteMedicalCenterAddress(Id, trackChanges: false);

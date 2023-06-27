@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.Domain.Entities
 {
     public class Community_Medical_Centers
     {
-        [Key] 
+        [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Medical Center Name cannot be left vacant")]
-        [MaxLength(50, ErrorMessage ="Medical Center Name cannot exceed 50 charaacters")]
+        [Required(ErrorMessage = "Medical Center Name cannot be left vacant")]
+        [MaxLength(50, ErrorMessage = "Medical Center Name cannot exceed 50 charaacters")]
         public string? MedicalCenterName { get; set; }
         [Required(ErrorMessage = "Medical Center Manager Name cannot be left vacant")]
         [MaxLength(20, ErrorMessage = "Medical Center Name cannot exceed 20 charaacters")]

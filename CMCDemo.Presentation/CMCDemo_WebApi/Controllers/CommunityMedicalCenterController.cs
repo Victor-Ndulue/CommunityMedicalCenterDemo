@@ -1,6 +1,5 @@
 ﻿using CMCDemo.Applications.DTO_s;
 using CMCDemo.ServiceContracts.IServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMCDemo_WebApi.Controllers
@@ -30,21 +29,21 @@ namespace CMCDemo_WebApi.Controllers
             return Ok(CommunityMedicalCenter);
         }
 
-        [HttpGet("communitymedicalcenter/{id}")]
+        [HttpGet("communitymedicalcenter/id")]
         public async Task<IActionResult> GetCommunityMedicalCenter(int Id)
         {
             var MedicalCenter = await _serviceManager.CommunityMedicalCenterService.GetCMCDtoAsync(Id, trackChanges: false);
             return Ok(MedicalCenter);
         }
 
-        [HttpPut("communitymedicalcenter/update/{id}")]
+        [HttpPut("communitymedicalcenter/update/id")]
         public async Task<IActionResult> UpdateMedicalCenter(int Id, Community_Medical_CentersForUpdate community_Medical_CentersForUpdate)
         {
             await _serviceManager.CommunityMedicalCenterService.UpdateCMCDto(Id, community_Medical_CentersForUpdate, trackChanges: false);
             return Ok();
         }
 
-        [HttpDelete("communitymedicalcenter/delete/{id}")]
+        [HttpDelete("communitymedicalcenter/delete/id")]
         public async Task DeleteMedicalCenter(int Id)
         {
             await _serviceManager.CommunityMedicalCenterService.DeleteCMCDto(Id, trackChanges: false);

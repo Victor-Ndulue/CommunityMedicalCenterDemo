@@ -17,6 +17,6 @@ namespace CMCDemo.Domain.Entities
 
         [ForeignKey(nameof(ProfessionalStaff))]
         public int ProfessionalStaffId { get; set; }
-        public virtual ProfessionalStaff? ProfessionalStaff { get; set;}
+        public virtual ProfessionalStaff? ProfessionalStaff { get; set; }
     }
 }

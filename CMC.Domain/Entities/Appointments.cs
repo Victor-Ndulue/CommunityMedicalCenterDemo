@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CMCDemo.Domain.Entities
 {
-    public class Appointments 
+    public class Appointments
     {
-        [Key] 
+        [Key]
         public int Id { get; set; }
         public ICollection<AppointmentCategory>? AppointmentCategory { get; set; }
     }

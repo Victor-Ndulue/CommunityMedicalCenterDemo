@@ -2,17 +2,12 @@
 using CMCDemo.Domain.Entities;
 using CMCDemo.Persistence.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.Persistence.Repository
 {
-    internal sealed class StaffAddressRepository : RepositoryBase<StaffAddress> , IStaffAddress
+    internal sealed class StaffAddressRepository : RepositoryBase<StaffAddress>, IStaffAddress
     {
-        public StaffAddressRepository(RepositoryContext repositoryContext):base(repositoryContext) 
+        public StaffAddressRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
         public void CreateStaffAddress(StaffAddress staffAddress)
@@ -23,7 +18,7 @@ namespace CMCDemo.Persistence.Repository
         public void DeleteStaffAddress(StaffAddress staffAddress)
         {
             Delete(staffAddress);
-        }        
+        }
 
         public async Task<IEnumerable<StaffAddress>> GetAllStaffAddressAsync(bool trackchanges)
         {
@@ -34,7 +29,7 @@ namespace CMCDemo.Persistence.Repository
 
         public async Task<StaffAddress> GetStaffAddressById(int Id, bool trackchanges)
         {
-            var StaffAddress = await FindByCondition(x =>x.Id.Equals(Id), trackchanges).FirstOrDefaultAsync(); 
+            var StaffAddress = await FindByCondition(x => x.Id.Equals(Id), trackchanges).FirstOrDefaultAsync();
             if (StaffAddress == null)
             {
                 throw new Exception("Staff address not found!");

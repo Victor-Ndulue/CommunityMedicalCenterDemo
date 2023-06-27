@@ -1,17 +1,12 @@
-﻿using CMCDemo.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using CMCDemo.Applications.DTO_s.DepartmentDTOS;
+using CMCDemo.Applications.DTO_s.StaffAddressDTOS;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS
 {
     public class ProfessionalStaffForCreation
     {
-        
+
         public int Community_Medical_CentersId { get; set; }
         public int StaffAddressId { get; set; }
         public int DepartmentId { get; set; }
@@ -31,6 +26,9 @@ namespace CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS
         public DateTime DateJoinedCenter { get; set; }
         [Required]
         public string? PhoneNumber { get; set; }
+        public StaffAddressForCreation? StaffAddress { get; set; }
+        public DepartmentForCreation? Department { get; set; }
+        public Community_Medical_CentersForCreation? Community_Medical_Centers { get; set; }
 
     }
 }

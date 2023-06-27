@@ -3,11 +3,6 @@ using CMCDemo.Applications.Common;
 using CMCDemo.ServiceContracts.Interfaces;
 using CMCDemo.ServiceContracts.IServices;
 using CMCDemo.ServiceRepository.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.ServiceRepository.CommonServices
 {
@@ -22,13 +17,13 @@ namespace CMCDemo.ServiceRepository.CommonServices
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper)
         {
             _professionalStaffService = new Lazy<IProfessionalStaffService>(() => new ProfessionalStaffService(repositoryManager, logger, mapper));
-            _communityMedicalCenterService = new Lazy<ICommunityMedicalCenterService>(()=>new CommunityMedicalCenterServices(repositoryManager, logger, mapper));
-            _medicalCenterAddressService = new Lazy<IMedicalCenterAddressService>(()=>new MedicalCenterAddressService(repositoryManager, logger, mapper));
-            _staffAddressService = new Lazy<IStaffAddressService>(()=>new StaffAddressService(repositoryManager, logger, mapper));
+            _communityMedicalCenterService = new Lazy<ICommunityMedicalCenterService>(() => new CommunityMedicalCenterServices(repositoryManager, logger, mapper));
+            _medicalCenterAddressService = new Lazy<IMedicalCenterAddressService>(() => new MedicalCenterAddressService(repositoryManager, logger, mapper));
+            _staffAddressService = new Lazy<IStaffAddressService>(() => new StaffAddressService(repositoryManager, logger, mapper));
             _refDisciplinesService = new Lazy<IRef_DisciplinesService>(() => new Ref_DisciplinesService(repositoryManager, logger, mapper));
-            _departmentService = new Lazy<IDepartmentService>(()=>new DepartmentService(repositoryManager, logger,mapper));
+            _departmentService = new Lazy<IDepartmentService>(() => new DepartmentService(repositoryManager, logger, mapper));
         }
-       
+
         public IProfessionalStaffService ProfessionalStaffService => _professionalStaffService.Value;
         public ICommunityMedicalCenterService CommunityMedicalCenterService => _communityMedicalCenterService.Value;
         public IMedicalCenterAddressService MedicalCenterAddressService => _medicalCenterAddressService.Value;

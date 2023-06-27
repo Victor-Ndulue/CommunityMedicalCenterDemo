@@ -3,11 +3,6 @@ using CMCDemo.Applications.Common;
 using CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS;
 using CMCDemo.Domain.Entities;
 using CMCDemo.ServiceContracts.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.ServiceRepository.Services
 {
@@ -52,7 +47,7 @@ namespace CMCDemo.ServiceRepository.Services
             return MapProfessionalStaff;
         }
 
-        public async Task <ProfessionalStaffDto> UpdateProfessionalStaffAsync(int Id, ProfessionalStaffForUpdate professsionalStaffForUpdate, bool trackChanges)
+        public async Task<ProfessionalStaffDto> UpdateProfessionalStaffAsync(int Id, ProfessionalStaffForUpdate professsionalStaffForUpdate, bool trackChanges)
         {
             var GetProfessionalStaff = await _repository.ProfessionalStaff.GetProfessionalStaffById(Id, trackChanges);
             var mapPStaff = _mapper.Map(professsionalStaffForUpdate, GetProfessionalStaff);

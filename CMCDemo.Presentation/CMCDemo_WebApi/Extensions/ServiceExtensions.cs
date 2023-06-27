@@ -10,7 +10,7 @@ namespace CMCDemo_WebApi.Extensions
     {
         public static void ConfigureCors(this IServiceCollection services)
         {
-            services.AddCors(option => 
+            services.AddCors(option =>
             {
                 option.AddPolicy("CorsPolicy", builder => builder
                 .AllowAnyOrigin()
@@ -30,7 +30,7 @@ namespace CMCDemo_WebApi.Extensions
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
         }
-        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) => 
+        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<RepositoryContext>(option =>
             option.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
         public static void ConfigureServiceManager(this IServiceCollection services)

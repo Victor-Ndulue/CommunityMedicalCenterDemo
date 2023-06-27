@@ -1,7 +1,5 @@
 ﻿using CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS;
 using CMCDemo.ServiceContracts.IServices;
-using CMCDemo.ServiceRepository.CommonServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMCDemo_WebApi.Controllers
@@ -22,7 +20,7 @@ namespace CMCDemo_WebApi.Controllers
             var professionalStaffDto = await _serviceManager.ProfessionalStaffService.CreateProfessionalStaffDto(creationDto);
             return Ok(professionalStaffDto);
         }
-    
+
         [HttpGet("staffs")]
 
         public async Task<IActionResult> GetAllProfessionalStaff()
@@ -34,7 +32,7 @@ namespace CMCDemo_WebApi.Controllers
         [HttpGet("staff/{id}")]
         public async Task<IActionResult> GetProfessionalStaff(int Id)
         {
-            var Staff = await _serviceManager.ProfessionalStaffService.GetProfessionalStaffDtoAsync(Id, trackChanges:false);
+            var Staff = await _serviceManager.ProfessionalStaffService.GetProfessionalStaffDtoAsync(Id, trackChanges: false);
             return Ok(Staff);
         }
 

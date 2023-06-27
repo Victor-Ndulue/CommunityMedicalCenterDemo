@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
 using CMCDemo.Applications.Common;
 using CMCDemo.Applications.DTO_s;
-using CMCDemo.Applications.DTO_s.ProfessionalStaffDTOS;
 using CMCDemo.Domain.Entities;
 using CMCDemo.ServiceContracts.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.ServiceRepository.Services
 {
@@ -25,10 +19,12 @@ namespace CMCDemo.ServiceRepository.Services
         }
         public async Task<Community_Medical_CentersDto> CreateCMCDto(Community_Medical_CentersForCreation creationDto)
         {
-            var Address = _repository.MedicalCenterAddress.GetMedicalCenterAddressById(creationDto.MedicalCenterAddressId, trackchanges:false);
-            creationDto.medicalCenterAddress = Address;
+            var MapCmcAddress = _mapper.Map<MedicalCenterAddress>(creationDto.MedicalCenterAddress);
+            _repository.MedicalCenterAddress.CreateMedicalCenterAddress(MapCmcAddress);
+            await _repository.SaveAsync();
+            creationDto.MedicalCenterAddressId = MapCmcAddress.Id;
             var MapCMC = _mapper.Map<Community_Medical_Centers>(creationDto);
-            _repository.Community_Medical_Centers.CreateCommunity_Medical_Centers(MapCMC);            
+            _repository.Community_Medical_Centers.CreateCommunity_Medical_Centers(MapCMC);
             await _repository.SaveAsync();
             return _mapper.Map<Community_Medical_CentersDto>(MapCMC);
         }
@@ -57,12 +53,20 @@ namespace CMCDemo.ServiceRepository.Services
 
         public async Task<Community_Medical_CentersDto> GetCMCDtoAsync(int Id, bool trackChanges)
         {
-            var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterById(Id, trackChanges);
-            var MapCMC = _mapper.Map<Community_Medical_CentersDto>(GetCMC);
-            return MapCMC;
+            try
+            {
+                var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterById(Id, trackChanges);
+                var MapCMC = _mapper.Map<Community_Medical_CentersDto>(GetCMC);
+                return MapCMC;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"There was an error loading {GetCMCDtoAsync}. Error {ex}");
+                throw;
+            }
         }
 
-        public async Task <Community_Medical_CentersDto> UpdateCMCDto(int Id, Community_Medical_CentersForUpdate community_Medical_CentersForUpdate, bool trackChanges)
+        public async Task<Community_Medical_CentersDto> UpdateCMCDto(int Id, Community_Medical_CentersForUpdate community_Medical_CentersForUpdate, bool trackChanges)
         {
             var GetCMC = await _repository.Community_Medical_Centers.GetCommunity_Medical_CenterById(Id, trackChanges);
             var MapCMC = _mapper.Map(community_Medical_CentersForUpdate, GetCMC);

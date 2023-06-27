@@ -1,6 +1,5 @@
 ﻿using CMCDemo.Applications.DTO_s.DepartmentDTOS;
 using CMCDemo.ServiceContracts.IServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMCDemo_WebApi.Controllers
@@ -32,7 +31,7 @@ namespace CMCDemo_WebApi.Controllers
         [HttpGet("department/{id}")]
         public async Task<IActionResult> GetDepartment(int id)
         {
-            var Department= await _serviceManager.DepartmentService.GetDepartmentDto(id, trackChanges: false);
+            var Department = await _serviceManager.DepartmentService.GetDepartmentDto(id, trackChanges: false);
             return Ok(Department);
         }
 

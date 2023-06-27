@@ -2,7 +2,7 @@
 {
     public class ProffesionalStaffNotFoundException : NotFoundException
     {
-        public ProffesionalStaffNotFoundException(string Name) : 
+        public ProffesionalStaffNotFoundException(string Name) :
             base($"The staff with name {Name} does not exist")
         {
         }

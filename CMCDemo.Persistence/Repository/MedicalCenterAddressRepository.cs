@@ -2,11 +2,6 @@
 using CMCDemo.Domain.Entities;
 using CMCDemo.Persistence.Common;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.Persistence.Repository
 {
@@ -40,12 +35,12 @@ namespace CMCDemo.Persistence.Repository
 
         public async Task<MedicalCenterAddress> GetMedicalCenterAddressById(int Id, bool trackchanges)
         {
-            var MedicalCenterAddress = await FindByCondition(x =>x.Id.Equals(Id), trackchanges).FirstOrDefaultAsync();
+            var MedicalCenterAddress = await FindByCondition(x => x.Id.Equals(Id), trackchanges).FirstOrDefaultAsync();
             if (MedicalCenterAddress == null)
             {
                 throw new Exception("Medical Center Address not found");
             }
-                return MedicalCenterAddress;
+            return MedicalCenterAddress;
         }
     }
 }

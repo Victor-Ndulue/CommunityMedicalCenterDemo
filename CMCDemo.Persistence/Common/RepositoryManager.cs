@@ -1,19 +1,14 @@
 ﻿using CMCDemo.Applications.Common;
 using CMCDemo.Applications.Contracts;
 using CMCDemo.Persistence.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CMCDemo.Persistence.Common
 {
     public sealed class RepositoryManager : IRepositoryManager
     {
         private readonly RepositoryContext _repositoryContext;
-        private readonly Lazy <ICommunity_Medical_CentersRepository> _communityRepository;
-        private readonly Lazy <IDepartmentRepository> _departmentRepository;
+        private readonly Lazy<ICommunity_Medical_CentersRepository> _communityRepository;
+        private readonly Lazy<IDepartmentRepository> _departmentRepository;
         private readonly Lazy<IMedicalCenterAddress> _medicalCenterAddress;
         private readonly Lazy<IProfessionalStaff> _professionalStaff;
         private readonly Lazy<IRef_Disciplines> _ref_Disciplines;
@@ -21,12 +16,12 @@ namespace CMCDemo.Persistence.Common
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
-            _communityRepository= new Lazy<ICommunity_Medical_CentersRepository>(()=> new Community_Medical_CentersRepository(repositoryContext));
+            _communityRepository = new Lazy<ICommunity_Medical_CentersRepository>(() => new Community_Medical_CentersRepository(repositoryContext));
             _departmentRepository = new Lazy<IDepartmentRepository>(() => new DepartmentRepository(repositoryContext));
-            _medicalCenterAddress = new Lazy<IMedicalCenterAddress>(()=>new MedicalCenterAddressRepository(repositoryContext));
+            _medicalCenterAddress = new Lazy<IMedicalCenterAddress>(() => new MedicalCenterAddressRepository(repositoryContext));
             _professionalStaff = new Lazy<IProfessionalStaff>(() => new ProfessionalStaffRepository(repositoryContext));
             _ref_Disciplines = new Lazy<IRef_Disciplines>(() => new Ref_DisciplinesRepository(repositoryContext));
-            _staffAddress = new Lazy<IStaffAddress>(()=>new StaffAddressRepository(repositoryContext));
+            _staffAddress = new Lazy<IStaffAddress>(() => new StaffAddressRepository(repositoryContext));
         }
         public ICommunity_Medical_CentersRepository Community_Medical_Centers => _communityRepository.Value;
 

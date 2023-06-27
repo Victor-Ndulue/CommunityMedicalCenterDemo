@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CMCDemo.Domain.Entities
 {
     public class MedicalCenterAddress : CommonAddress
     {
-        [Key] 
+        [Key]
         public int Id { get; set; }
-        public virtual ICollection<Community_Medical_Centers>? MedicalCenters { get; set; }
+        public virtual ICollection<Community_Medical_Centers>? Community_Medical_Centers { get; set; }
     }
 }

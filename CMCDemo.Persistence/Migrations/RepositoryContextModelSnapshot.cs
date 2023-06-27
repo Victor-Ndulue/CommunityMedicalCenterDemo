@@ -52,7 +52,7 @@ namespace CMCDemo.Persistence.Migrations
 
                     b.HasIndex("MedicalCenterAddressId");
 
-                    b.ToTable("Community_Medical_Centers");
+                    b.ToTable("Community_Medical_Centers", (string)null);
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.Department", b =>
@@ -77,7 +77,7 @@ namespace CMCDemo.Persistence.Migrations
 
                     b.HasIndex("Community_Medical_CentersId");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.MedicalCenterAddress", b =>
@@ -127,7 +127,7 @@ namespace CMCDemo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MedicalCenterAddress");
+                    b.ToTable("MedicalCenterAddress", (string)null);
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.ProfessionalStaff", b =>
@@ -183,7 +183,7 @@ namespace CMCDemo.Persistence.Migrations
 
                     b.HasIndex("StaffAddressId");
 
-                    b.ToTable("ProfessionalStaffs");
+                    b.ToTable("ProfessionalStaffs", (string)null);
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.Ref_Disciplines", b =>
@@ -213,7 +213,7 @@ namespace CMCDemo.Persistence.Migrations
 
                     b.HasIndex("ProfessionalStaffId");
 
-                    b.ToTable("Ref_Disciplines");
+                    b.ToTable("Ref_Disciplines", (string)null);
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.StaffAddress", b =>
@@ -263,7 +263,7 @@ namespace CMCDemo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StaffAddresses");
+                    b.ToTable("StaffAddresses", (string)null);
                 });
 
             modelBuilder.Entity("CMCDemo.Domain.Entities.Community_Medical_Centers", b =>
